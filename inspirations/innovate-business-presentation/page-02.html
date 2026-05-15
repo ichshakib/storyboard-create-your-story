@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide 2 - Image Left</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandorange: "#F97316",
+              brandred: "#E11D48",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .clip-img-container {
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+      }
+      .clip-bottom-accent {
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+      }
+      .clip-button-icon {
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden font-sans">
+    <div class="relative flex h-[540px] w-[960px] overflow-hidden bg-white">
+      <div class="relative flex h-full w-full overflow-hidden bg-white">
+        <!-- Bottom left accent shape -->
+        <div
+          class="from-brandred to-brandorange clip-bottom-accent absolute bottom-0 left-0 z-0 h-[250px] w-[350px] bg-gradient-to-tr opacity-90"
+        ></div>
+
+        <!-- Left Image -->
+        <div class="clip-img-container relative z-10 h-full w-[55%] pr-1">
+          <img
+            src="/presentation-images/innovate-business-presentation/slide-2-img-1.jpg"
+            alt="High precision engineering component close-up"
+            class="h-full w-full object-cover"
+          />
+        </div>
+
+        <!-- Right Content -->
+        <div
+          class="z-10 flex h-full w-[45%] flex-col justify-center pr-12 pl-6"
+        >
+          <h2 class="mb-6 text-3xl leading-tight font-bold text-gray-800">
+            Engineering for a<br />
+            Sustainable Future
+          </h2>
+
+          <p class="mb-4 text-xs leading-relaxed text-gray-500">
+            Our team delivers high-performance solutions that balance technical
+            efficiency with environmental responsibility. We leverage advanced
+            R&D to optimize resource consumption.
+          </p>
+          <p class="mb-8 text-xs leading-relaxed text-gray-500">
+            By integrating smart automation and renewable energy protocols, we
+            help businesses transition to a circular economy model while
+            maximizing their operational output.
+          </p>
+
+          <button
+            class="from-brandred to-brandorange flex h-9 w-max items-center overflow-hidden rounded-full bg-gradient-to-r text-white shadow-lg transition-transform hover:-translate-y-0.5"
+          >
+            <span class="px-5 py-2 text-xs font-semibold">Our Workflow</span>
+            <span
+              class="clip-button-icon flex h-full items-center justify-center bg-white/20 px-3"
+            >
+              <i data-lucide="chevron-right" class="h-4 w-4 text-white"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

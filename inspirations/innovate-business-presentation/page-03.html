@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide 3 - Text Left</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandorange: "#F97316",
+              brandred: "#E11D48",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .clip-img-container {
+        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+      }
+      .clip-top-accent {
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden font-sans">
+    <div class="relative flex h-[540px] w-[960px] overflow-hidden bg-white">
+      <div class="relative flex h-full w-full overflow-hidden bg-white">
+        <!-- Left Content -->
+        <div
+          class="z-10 flex h-full w-[50%] flex-col justify-center pr-8 pl-16"
+        >
+          <h2 class="mb-4 text-2xl leading-tight font-bold text-gray-800">
+            Strategic Consulting for<br />
+            Global Enterprises
+          </h2>
+
+          <p class="mb-10 pr-8 text-[11px] leading-relaxed text-gray-500">
+            We provide a comprehensive framework for digital transformation,
+            ensuring that your organization remains competitive in a rapidly
+            evolving market. Our methodology is data-driven and
+            results-oriented.
+          </p>
+
+          <div class="mt-4 flex items-start">
+            <div
+              class="text-brandorange mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-gray-200 shadow"
+            >
+              <i data-lucide="settings-2" class="h-6 w-6"></i>
+            </div>
+            <div>
+              <h4 class="mb-2 text-sm font-bold text-gray-800">
+                Systems Optimization
+              </h4>
+              <p class="text-[10px] leading-relaxed text-gray-500">
+                We analyze your existing workflows to identify bottlenecks and
+                implement automated solutions that reduce overhead and increase
+                throughput.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Middle Red Accent -->
+        <div
+          class="bg-brandred clip-top-accent absolute top-0 right-[40%] z-0 h-[120px] w-[180px]"
+        ></div>
+
+        <!-- Right image area with gradient background block -->
+        <div
+          class="clip-img-container absolute inset-y-0 right-0 z-10 flex w-[55%]"
+        >
+          <div
+            class="from-brandorange to-brandred relative h-full w-full bg-gradient-to-br"
+          >
+            <img
+              src="/presentation-images/innovate-business-presentation/slide-3-img-1.jpg"
+              alt="Professional consultant working with a laptop"
+              class="absolute inset-x-0 top-[0px] bottom-0 h-[100%] w-full object-cover pb-[0px] opacity-90"
+            />
+            <div
+              class="clip-img-container absolute inset-0 left-[15px] z-0 bg-white pr-1"
+              style="clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%)"
+            >
+              <img
+                src="/presentation-images/innovate-business-presentation/slide-3-img-2.jpg"
+                alt="Modern tech workspace"
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              class="from-brandred absolute inset-0 z-[-1] bg-gradient-to-r to-orange-500"
+            ></div>
+          </div>
+        </div>
+
+        <div class="absolute top-0 right-0 bottom-0 z-10 w-[55%]">
+          <div
+            class="from-brandred absolute inset-0 bg-gradient-to-tr to-orange-500"
+            style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%)"
+          ></div>
+          <img
+            src="/presentation-images/innovate-business-presentation/slide-3-img-3.jpg"
+            alt="Executive consulting session"
+            class="absolute inset-0 h-full w-full object-cover"
+            style="clip-path: polygon(25% 0, 100% 0, 100% 100%, 15% 100%)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

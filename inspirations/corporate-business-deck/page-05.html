@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Slide 5 - Why Choose Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { brandred: "#EE1D23", branddark: "#1E1E1E" } },
+        },
+      }
+    </script>
+    <style>
+      .clip-curve {
+        clip-path: ellipse(70% 100% at 20% 50%);
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden font-sans">
+    <div class="relative flex h-[540px] w-[960px] overflow-hidden bg-white">
+      <!-- Left Side Image -->
+      <div class="relative z-10 h-full w-[45%] overflow-hidden">
+        <div class="bg-branddark clip-curve absolute inset-0">
+          <img
+            src="/presentation-images/corporate-business-deck/slide-5-img-1.jpg"
+            alt="Office Building"
+            class="h-full w-full object-cover opacity-60"
+          />
+        </div>
+        <div
+          class="pointer-events-none absolute inset-0 flex items-center justify-center"
+        >
+          <div class="text-center text-white">
+            <h3 class="text-2xl font-black uppercase">Expertise</h3>
+            <p class="text-xs tracking-widest uppercase opacity-80">
+              DRIVING RESULTS GLOBALLY
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side Content -->
+      <div class="flex h-full w-[55%] flex-col justify-center p-16">
+        <label
+          class="mb-2 block text-[10px] font-bold tracking-widest text-gray-400 uppercase"
+          >Why Partner With Us</label
+        >
+        <h2
+          class="text-branddark mb-6 text-3xl leading-tight font-black uppercase"
+        >
+          WHY<br />
+          <span class="text-brandred">CHOOSE US</span>
+        </h2>
+        <p class="mb-8 text-[11px] leading-relaxed text-gray-500">
+          We combine cutting-edge technology with deep industry expertise to
+          deliver measurable results that scale with your business needs.
+        </p>
+
+        <div class="space-y-6">
+          <div class="flex items-center">
+            <div
+              class="bg-branddark mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white"
+            >
+              <i data-lucide="award" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h5 class="text-branddark text-sm font-bold uppercase">
+                AWARD-WINNING STRATEGY
+              </h5>
+              <p class="text-[9px] leading-tight text-gray-500">
+                Our data-driven methodologies have been recognized by industry
+                leaders for exceptional efficiency and ROI.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div
+              class="bg-brandred mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white"
+            >
+              <i data-lucide="users" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h5 class="text-branddark text-sm font-bold uppercase">
+                EXPERT LEADERSHIP
+              </h5>
+              <p class="text-[9px] leading-tight text-gray-500">
+                Our team consists of seasoned professionals with over 20 years
+                of collective experience in global digital scaling.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div
+              class="bg-branddark mr-4 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white"
+            >
+              <i data-lucide="zap" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h5 class="text-branddark text-sm font-bold uppercase">
+                RAPID IMPLEMENTATION
+              </h5>
+              <p class="text-[9px] leading-tight text-gray-500">
+                We leverage proprietary AI frameworks to cut traditional
+                deployment times by up to 40% without compromising quality.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

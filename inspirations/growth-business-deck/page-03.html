@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide 3 - Our Mission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandgreen: "#2ecc71",
+              branddark: "#1e272e",
+              brandblack: "#111827",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .clip-arrow {
+        clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+      }
+      .clip-hex {
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden font-sans">
+    <div class="relative flex h-[540px] w-[960px] overflow-hidden bg-white">
+      <!-- Left Side with Arrow Image -->
+      <div class="relative h-full w-[45%]">
+        <div class="bg-brandgreen clip-arrow absolute inset-0 z-0"></div>
+        <div class="clip-arrow absolute inset-2 z-10 overflow-hidden bg-white">
+          <img
+            src="/presentation-images/growth-business-deck/slide-3-img-1.jpg"
+            alt="Professional team discussing project in a bright office"
+            class="h-full w-full object-cover grayscale-[0.2]"
+          />
+          <div class="bg-brandgreen absolute inset-0 opacity-20"></div>
+        </div>
+        <!-- Overlapping Dark Accent -->
+        <div
+          class="bg-branddark clip-hex absolute -right-8 bottom-[10%] z-20 h-32 w-24 opacity-90"
+        ></div>
+      </div>
+
+      <!-- Right Side Content -->
+      <div class="w-[55%] p-16 pl-24">
+        <h2
+          class="text-branddark mb-2 text-[48px] leading-tight font-black uppercase"
+        >
+          OUR <span class="text-brandgreen">MISSION</span>
+        </h2>
+        <div class="bg-brandgreen mb-10 h-1 w-20"></div>
+
+        <p class="mb-12 max-w-md text-[13px] leading-relaxed text-gray-500">
+          To empower every business with the tools and strategies they need to
+          thrive in a rapidly evolving global market. We focus on innovation,
+          integrity, and impact.
+        </p>
+
+        <div class="space-y-8">
+          <div class="flex items-start">
+            <div
+              class="clip-hex bg-brandgreen/10 mr-6 flex h-12 w-12 items-center justify-center"
+            >
+              <i data-lucide="target" class="text-brandgreen h-6 w-6"></i>
+            </div>
+            <div>
+              <h4 class="text-branddark mb-1 text-[14px] font-black uppercase">
+                Market Targeting
+              </h4>
+              <p class="text-[11px] text-gray-400">
+                Identifying and penetrating high-growth emerging markets.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div
+              class="clip-hex bg-brandgreen/10 mr-6 flex h-12 w-12 items-center justify-center"
+            >
+              <i data-lucide="line-chart" class="text-brandgreen h-6 w-6"></i>
+            </div>
+            <div>
+              <h4 class="text-branddark mb-1 text-[14px] font-black uppercase">
+                Growing Marketing
+              </h4>
+              <p class="text-[11px] text-gray-400">
+                Scaling brand awareness through innovative digital channels.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logo in Corner -->
+      <div class="absolute top-8 left-12 z-30 flex items-center">
+        <div
+          class="clip-hex text-brandgreen flex h-8 w-8 items-center justify-center bg-white shadow-lg"
+        >
+          <i data-lucide="x" class="h-5 w-5"></i>
+        </div>
+        <span
+          class="ml-2 text-[10px] font-black tracking-tighter text-white uppercase"
+          >Growth Deck</span
+        >
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

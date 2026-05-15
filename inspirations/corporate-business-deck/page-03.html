@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Slide 3 - Introduce Our Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { brandred: "#EE1D23", branddark: "#1E1E1E" } },
+        },
+      }
+    </script>
+  </head>
+  <body class="overflow-hidden font-sans">
+    <div class="flex h-[540px] w-[960px] bg-white p-16">
+      <!-- Left Side -->
+      <div class="w-1/2 pr-12">
+        <label
+          class="mb-2 block text-[10px] font-bold tracking-widest text-gray-400 uppercase"
+          >Empowering Digital Futures</label
+        >
+        <h2
+          class="text-branddark mb-6 text-3xl leading-tight font-black uppercase"
+        >
+          INTRODUCE<br />
+          <span class="text-brandred font-black">OUR COMPANY</span>
+        </h2>
+        <p class="mb-8 text-[11px] leading-relaxed text-gray-500">
+          Founded in 2018, our company has quickly risen to become a premier
+          partner for enterprises seeking meaningful digital transformation and
+          scalable technology solutions.
+        </p>
+
+        <h4 class="mb-2 text-sm font-bold text-gray-800 uppercase">
+          OUR MISSION
+        </h4>
+        <p class="text-[10px] leading-relaxed text-gray-500 italic">
+          "To provide world-class innovation that bridges the gap between
+          complex technology and intuitive human experiences, driving growth for
+          every partner we serve."
+        </p>
+      </div>
+
+      <!-- Right Side -->
+      <div class="flex w-1/2 flex-col justify-center space-y-4">
+        <!-- Item A -->
+        <div
+          class="border-brandred relative flex items-center rounded-lg border-l-4 bg-gray-50 p-4 transition-transform hover:translate-x-2"
+        >
+          <div
+            class="bg-brandred mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-xl font-black text-white"
+          >
+            <i data-lucide="lightbulb" class="h-6 w-6"></i>
+          </div>
+          <div>
+            <h5 class="text-branddark text-sm font-bold uppercase">
+              STRATEGIC INNOVATION
+            </h5>
+            <label class="text-[9px] font-bold text-gray-400 uppercase"
+              >CORE PILLAR 01</label
+            >
+            <p class="mt-1 text-[9px] leading-tight text-gray-500">
+              We prioritize forward-thinking technologies that solve tomorrow's
+              problems today.
+            </p>
+          </div>
+        </div>
+        <!-- Item B -->
+        <div
+          class="border-brandred relative flex items-center rounded-lg border-l-4 bg-gray-50 p-4 transition-transform hover:translate-x-2"
+        >
+          <div
+            class="bg-brandred mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-xl font-black text-white"
+          >
+            <i data-lucide="shield-check" class="h-6 w-6"></i>
+          </div>
+          <div>
+            <h5 class="text-branddark text-sm font-bold uppercase">
+              OPERATIONAL EXCELLENCE
+            </h5>
+            <label class="text-[9px] font-bold text-gray-400 uppercase"
+              >CORE PILLAR 02</label
+            >
+            <p class="mt-1 text-[9px] leading-tight text-gray-500">
+              Maintaining the highest standards of quality and efficiency in
+              every project phase.
+            </p>
+          </div>
+        </div>
+        <!-- Item C -->
+        <div
+          class="border-brandred relative flex items-center rounded-lg border-l-4 bg-gray-50 p-4 transition-transform hover:translate-x-2"
+        >
+          <div
+            class="bg-brandred mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-xl font-black text-white"
+          >
+            <i data-lucide="heart" class="h-6 w-6"></i>
+          </div>
+          <div>
+            <h5 class="text-branddark text-sm font-bold uppercase">
+              CUSTOMER CENTRICITY
+            </h5>
+            <label class="text-[9px] font-bold text-gray-400 uppercase"
+              >CORE PILLAR 03</label
+            >
+            <p class="mt-1 text-[9px] leading-tight text-gray-500">
+              Our partners are at the heart of everything we do, ensuring
+              aligned success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

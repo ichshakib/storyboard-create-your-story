@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide 1 - Business Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandred: "#EE1D23",
+              branddark: "#1E1E1E",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .clip-circle {
+        clip-path: circle(50% at 50% 50%);
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden font-sans">
+    <div
+      class="relative flex h-[540px] w-[960px] items-center overflow-hidden bg-white"
+    >
+      <!-- Logo -->
+      <div class="absolute top-8 left-12 flex items-center">
+        <div
+          class="bg-brandred mr-2 flex h-8 w-8 items-center justify-center rounded-full text-white"
+        >
+          <i data-lucide="crown" class="h-5 w-5"></i>
+        </div>
+        <div
+          class="text-[10px] font-bold tracking-widest text-gray-800 uppercase"
+        >
+          <div class="text-brandred">Global Vision</div>
+          <div class="text-branddark">Innovating Excellence</div>
+        </div>
+      </div>
+
+      <!-- Left Content -->
+      <div class="w-1/2 pr-6 pl-12">
+        <h1
+          class="text-brandred mb-0 text-[54px] leading-tight font-black uppercase"
+        >
+          CORPORATE
+        </h1>
+        <h1
+          class="text-branddark mb-4 text-[54px] leading-tight font-black uppercase"
+        >
+          STRATEGY DECK
+        </h1>
+        <div class="bg-brandred mb-6 h-1 w-16"></div>
+        <p class="max-w-sm text-[11px] leading-relaxed text-gray-500">
+          A comprehensive overview of our strategic roadmap, market positioning,
+          and core operational milestones for the upcoming fiscal years.
+        </p>
+        <p
+          class="mt-4 text-[10px] font-bold tracking-widest text-gray-400 uppercase italic"
+        >
+          Global Partner Network 2024
+        </p>
+      </div>
+
+      <!-- Right Side -->
+      <div class="relative flex h-full w-1/2 items-center justify-center">
+        <!-- Background Accents -->
+        <div
+          class="bg-brandred absolute top-[10%] right-[-10%] h-[350px] w-[350px] rounded-full opacity-90"
+        ></div>
+        <div
+          class="bg-branddark absolute right-[20%] bottom-[5%] h-[120px] w-[120px] rounded-full"
+        ></div>
+
+        <!-- Main Circular Image -->
+        <div
+          class="relative z-10 flex h-[340px] w-[340px] items-center justify-center overflow-hidden rounded-full border-[10px] border-white shadow-2xl"
+        >
+          <img
+            src="/presentation-images/corporate-business-deck/slide-1-img-1.jpg"
+            alt="Executive professional on a call"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide 2 - About Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandgreen: "#2ecc71",
+              branddark: "#1e272e",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .clip-hex {
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden font-sans">
+    <div class="relative h-[540px] w-[960px] overflow-hidden bg-[#f8fcf9] p-16">
+      <!-- Title -->
+      <div class="mb-12 flex items-start">
+        <div class="bg-brandgreen mt-6 mr-6 h-[2px] w-16"></div>
+        <div>
+          <h2
+            class="text-branddark text-[48px] leading-none font-black uppercase"
+          >
+            ABOUT
+          </h2>
+          <h2
+            class="text-brandgreen text-[48px] leading-none font-black uppercase"
+          >
+            COMPANY
+          </h2>
+        </div>
+      </div>
+
+      <div class="flex">
+        <!-- Left Content -->
+        <div class="w-1/2 pr-12">
+          <p
+            class="text-branddark mb-6 text-[14px] leading-relaxed font-medium"
+          >
+            Founded in 2015, we provide cutting-edge solutions for modern
+            enterprises. Our expertise spans across strategic planning, market
+            analysis, and digital integration.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="clip-hex bg-brandgreen mr-3 h-2 w-2"></div>
+              <p
+                class="text-[12px] font-bold tracking-wider text-gray-600 uppercase"
+              >
+                Strategic Innovation
+              </p>
+            </div>
+            <div class="flex items-center">
+              <div class="clip-hex bg-brandgreen mr-3 h-2 w-2"></div>
+              <p
+                class="text-[12px] font-bold tracking-wider text-gray-600 uppercase"
+              >
+                Operational Excellence
+              </p>
+            </div>
+            <div class="flex items-center">
+              <div class="clip-hex bg-brandgreen mr-3 h-2 w-2"></div>
+              <p
+                class="text-[12px] font-bold tracking-wider text-gray-600 uppercase"
+              >
+                Global Connectivity
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="border-brandgreen mt-12 rounded-r-lg border-l-4 bg-white p-6 shadow-xl"
+          >
+            <h4 class="text-brandgreen mb-2 text-[12px] font-black uppercase">
+              Company Position
+            </h4>
+            <p class="text-[11px] leading-relaxed text-gray-500 italic">
+              Leading the industry with over 500 successful project
+              implementations globally.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Side: Hex Images -->
+        <div class="relative flex w-1/2 items-center justify-center">
+          <div class="clip-hex bg-brandgreen relative h-[320px] w-[280px] p-1">
+            <div class="clip-hex h-full w-full bg-white p-1">
+              <img
+                src="/presentation-images/growth-business-deck/slide-2-img-1.jpg"
+                alt="A high-rise modern corporate building exterior"
+                class="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Secondary Overlapping Hex -->
+          <div
+            class="clip-hex bg-branddark absolute -right-4 -bottom-10 z-10 h-[180px] w-[160px] p-1"
+          >
+            <div class="clip-hex h-full w-full bg-white p-1">
+              <img
+                src="/presentation-images/growth-business-deck/slide-2-img-2.jpg"
+                alt="Business professionals collaborating in a meeting"
+                class="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Floating Elements -->
+          <div
+            class="clip-hex bg-brandgreen absolute top-0 right-0 h-8 w-8 opacity-40"
+          ></div>
+          <div
+            class="clip-hex border-brandgreen absolute bottom-20 left-0 h-6 w-6 border-2"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Footer Page Number -->
+      <div class="absolute right-10 bottom-10 flex items-center">
+        <div
+          class="clip-hex border-brandgreen text-brandgreen flex h-10 w-10 items-center justify-center border-2 bg-transparent font-bold"
+        >
+          02
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

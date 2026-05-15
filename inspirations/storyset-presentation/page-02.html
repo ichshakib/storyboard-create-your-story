@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storyset Presentation - Slide 02</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mainpurple: "#522583",
+              lightpurple: "#9A7FB8",
+              brandyellow: "#ffcc33",
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body class="overflow-hidden bg-white font-sans">
+    <div
+      class="relative flex h-[540px] w-[960px] items-center overflow-hidden p-20"
+    >
+      <!-- Background Waves -->
+      <svg
+        class="absolute top-0 left-0 h-40 w-full opacity-20"
+        viewBox="0 0 960 160"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,0 L960,0 L960,100 C700,160 300,40 0,100 Z" fill="#522583" />
+      </svg>
+      <svg
+        class="absolute bottom-0 left-0 h-40 w-full opacity-20"
+        viewBox="0 0 960 160"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,60 C300,0 700,120 960,60 L960,160 L0,160 Z"
+          fill="#522583"
+        />
+      </svg>
+
+      <!-- Left: Content -->
+      <div class="relative z-10 w-1/2 pr-12">
+        <h1
+          class="text-brandyellow mb-6 text-6xl font-black tracking-tight uppercase"
+        >
+          MISSION
+        </h1>
+        <p class="text-lg leading-relaxed font-medium text-gray-600">
+          Our mission is to simplify complex workflows and empower individuals
+          to achieve their full potential through innovation and design
+          excellence. We strive to create meaningful impact in every project we
+          undertake.
+        </p>
+        <div class="bg-mainpurple mt-8 h-1 w-16"></div>
+      </div>
+
+      <!-- Right: Storyset Image -->
+      <div class="relative z-10 flex w-1/2 items-center justify-center">
+        <img
+          src="/storyset/At the office-bro.svg"
+          alt="Man working at desk"
+          class="w-full max-w-[400px]"
+        />
+        <!-- Abstract squiggle -->
+        <svg
+          class="absolute top-0 right-0 h-24 w-24 opacity-20"
+          viewBox="0 0 100 100"
+        >
+          <path
+            d="M10,50 Q40,0 80,50 T150,50"
+            stroke="#522583"
+            stroke-width="2"
+            fill="none"
+          />
+        </svg>
+      </div>
+    </div>
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

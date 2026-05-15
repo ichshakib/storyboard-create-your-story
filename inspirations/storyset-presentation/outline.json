@@ -1,0 +1,51 @@
+{
+  "title": "Storyset: The Modern Collaborative Business Presentation",
+  "description": "A vibrant and approachable business presentation featuring a rich purple-themed palette, organic wavy shapes, and a signature set of Storyset illustrations. This deck is architected to communicate modern teamwork, mission-driven leadership, and research-backed strategy. It uses a high-fidelity combination of abstract streaks, leafy yellow accents, and clean white backgrounds to create a friendly yet professional agency-grade design.",
+  "slides": [
+    {
+      "title": "BUSINESS PRESENTATION: ELEVATE YOUR STRATEGY",
+      "prompt": "A vibrant and welcoming title slide that immediately signals a modern, creative approach. A deep purple canvas is layered with organic wavy shapes and accented by bright leafy yellow streaks. A subtle technical texture is added through custom dotted patterns in the background, while the primary title commands attention in a bold, pristine white typeface. DESIGN_SPEC: {\n  \"layout\": {\n    \"type\": \"OrganicHero\",\n    \"alignment\": \"center\"\n  },\n  \"colors\": {\n    \"bg\": \"#6D28D9\",\n    \"accent_1\": \"#FACC15\",\n    \"accent_2\": \"#8B5CF6\",\n    \"text\": \"#FFFFFF\"\n  },\n  \"visual_elements\": {\n    \"bg_waves\": { \"count\": 3, \"opacity\": \"0.4\" },\n    \"dot_pattern\": { \"size\": \"4px\", \"gap\": \"16px\", \"color\": \"#FFFFFF\", \"opacity\": \"0.1\" }\n  },\n  \"typography\": {\n    \"h1\": { \"size\": \"72px\", \"weight\": \"900\", \"case\": \"uppercase\" },\n    \"subline\": { \"size\": \"20px\", \"color\": \"#FACC15\", \"weight\": \"Bold\" }\n  }\n}",
+      "description": "Professional Solutions for Modern Teams. Elevate your strategy with our creative and high-velocity approach. We are the bridge between your vision and a scalable, global implementation."
+    },
+    {
+      "title": "OUR MISSION: EMPOWERING THE INDIVIDUAL",
+      "prompt": "A clean and airy mission statement slide that prioritizes approachability. Set against a bright white background, purple wavy shapes frame the top and bottom, creating a professional boundary. A centered Storyset illustration of a man working on a laptop provides a friendly human focus, anchoring the technical mission in a user-centric reality. DESIGN_SPEC: {\n  \"layout\": \"CenteredIllustration\",\n  \"colors\": { \"bg\": \"#FFFFFF\", \"frame\": \"#6D28D9\" },\n  \"illustration\": {\n    \"type\": \"storyset-man-laptop\",\n    \"size\": \"320px\",\n    \"pos\": \"center-y\"\n  },\n  \"typography\": {\n    \"headline\": { \"size\": \"36px\", \"weight\": \"900\", \"color\": \"#1E293B\" },\n    \"body\": { \"size\": \"16px\", \"color\": \"#475569\", \"max_width\": \"600px\" }\n  }\n}",
+      "description": "Our primary mission is to simplify complex workflows and empower individuals to achieve their full creative potential. We do this through a relentless focus on innovation and design excellence that scales with the needs of our global partners."
+    },
+    {
+      "title": "OUR BUDGET: STRATEGIC FISCAL ALLOCATION",
+      "prompt": "A financial overview slide that makes complex data feel approachable. Wavy accents in purple, blue, and yellow create a dynamic flow across the canvas. A budget-themed Storyset illustration acts as a visual anchor, fostering trust through a design that feels both professional and well-planned. DESIGN_SPEC: {\n  \"layout\": \"DataIllustrationSplit\",\n  \"illustration\": { \"type\": \"storyset-analytics-money\", \"pos\": \"left\" },\n  \"typography\": {\n    \"stat_highlight\": { \"size\": \"48px\", \"weight\": \"Black\", \"color\": \"#6D28D9\" },\n    \"body\": \"Regular 14px #475569\"\n  },\n  \"accents\": { \"type\": \"wavy-blobs\", \"colors\": [\"#6D28D9\", \"#3B82F6\", \"#FACC15\"] }\n}",
+      "description": "Strategic and data-driven allocation of resources ensures sustainable growth and a high, measurable ROI for all stakeholders in the coming fiscal year. We are currently projecting a 20% increase in operational efficiency due to our new infrastructure."
+    },
+    {
+      "title": "ABOUT US: THE TEAM BEHIND THE VISION",
+      "prompt": "A warm team introduction slide that emphasizes the human talent behind the brand. A sophisticated purple wavy footer grounds the white background, while a friendly Storyset illustration of a female professional adds a relatable element. The layout is clean and balanced, inviting the viewer into the company's personal story. DESIGN_SPEC: {\n  \"layout\": \"FriendlyTeamIntro\",\n  \"footer\": { \"height\": \"120px\", \"color\": \"#6D28D9\" },\n  \"illustration\": { \"type\": \"storyset-business-woman\", \"size\": \"280px\", \"pos\": \"right-bottom\" },\n  \"typography\": {\n    \"headline\": \"Bold 42px #1E293B\",\n    \"body\": \"Medium 15px #64748B\"\n  }\n}",
+      "description": "We are a diverse team of award-winning creators, engineers, and strategists. We are dedicated to delivering high-quality digital experiences that resonate with users worldwide, from local startups to global Fortune 500 enterprises."
+    },
+    {
+      "title": "OUR CORE VALUES: THE PILLARS OF INTEGRITY",
+      "prompt": "A bold and authoritative values slide that establishes the organization's ethical foundation. Utilizing a full-bleed purple wavy background, three distinct columns of high-contrast white text are arranged horizontally. This layout communicates strength, unity, and a solid commitment to the company's core pillars. DESIGN_SPEC: {\n  \"layout\": \"ThreeColumnAuthority\",\n  \"bg\": \"#6D28D9\",\n  \"visuals\": { \"wave_intensity\": \"high\", \"overlay\": \"linear-gradient(rgba(109, 40, 217, 0.8), rgba(109, 40, 217, 1))\" },\n  \"typography\": {\n    \"pillar_title\": \"Black 22px #FACC15\",\n    \"pillar_body\": \"Regular 14px #FFFFFF\"\n  }\n}",
+      "description": "INTEGRITY: We believe in complete transparency and honesty with our partners. INNOVATION: We are always pushing the boundaries of what is possible in digital design. COLLABORATION: We believe that together, we achieve far more than we ever could alone."
+    },
+    {
+      "title": "MARKET RESEARCH: DATA-DRIVEN OPPORTUNITY",
+      "prompt": "A data-focused slide that transitions from vision to evidence with professional grace. A custom Storyset illustration of a researcher at a desk anchors the layout, while the surrounding space is used to present statistical findings in a clean, logical hierarchy. The design communicates deep research and strategic readiness. DESIGN_SPEC: {\n  \"layout\": \"ResearcherDashboard\",\n  \"illustration\": { \"type\": \"storyset-researcher\", \"pos\": \"right\" },\n  \"data_points\": {\n    \"bullet\": \"leaf-yellow\",\n    \"font\": \"Medium 16px #1E293B\"\n  },\n  \"typography\": {\n    \"stat\": \"Black 32px #6D28D9\"\n  }\n}",
+      "description": "Market research indicates a 40% increase in digital adoption across our target demographics. This highlights a key opportunity for expansion into emerging markets, where our modular design system can provide an immediate competitive advantage."
+    },
+    {
+      "title": "DETAILS AND MORE: A DEEP DIVE INTO EXECUTION",
+      "prompt": "A high-energy detail slide designed to communicate technical depth. Abstract blue and yellow streaks create a sense of rapid motion across the canvas, anchored by a solid purple wavy base. This layout is architected to keep stakeholders engaged during high-density technical discussions and milestone reviews. DESIGN_SPEC: {\n  \"layout\": \"HighEnergyDeepDive\",\n  \"visuals\": {\n    \"streaks\": { \"colors\": [\"#3B82F6\", \"#FACC15\"], \"angle\": \"-15deg\" },\n    \"base_wave\": \"#6D28D9\"\n  },\n  \"typography\": {\n    \"headline\": \"Bold 36px #FFFFFF\",\n    \"milestone_text\": \"Medium 12px #94A3B8\"\n  }\n}",
+      "description": "Comprehensive analysis of project requirements, technical specifications, and expected milestones. Our roadmap currently includes four major development cycles, each with its own set of audited deliverables and quality-assurance checks."
+    },
+    {
+      "title": "COLLABORATIVE DETAILS: SYNCHRONIZING THE WORKFLOW",
+      "prompt": "A collaborative-themed slide that emphasizes team alignment and precision. An illustration of two professionals in deep discussion provides the visual focus, while the surrounding layout remains clean and uncluttered. The design communicates that every project detail is scrutinized to ensure a high-fidelity final product. DESIGN_SPEC: {\n  \"layout\": \"CollaborativeFocus\",\n  \"illustration\": { \"type\": \"storyset-teamwork\", \"size\": \"340px\" },\n  \"typography\": {\n    \"headline\": \"Bold 28px #1E293B\",\n    \"body\": { \"size\": \"14px\", \"color\": \"#475569\", \"border_left\": \"4px solid #6D28D9\" }\n  }\n}",
+      "description": "Every project detail is carefully scrutinized to ensure perfect alignment with both brand guidelines and user expectations. Our collaborative process ensures that no stone is left unturned in our pursuit of engineering and design excellence."
+    },
+    {
+      "title": "THANK YOU: BUILDING THE FUTURE TOGETHER",
+      "prompt": "A memorable and warm closing slide that leaves a lasting impression. A rich purple background is beautifully accented by vibrant leafy yellow shapes, framing a bold centered thank-you message. Contact details are presented in a clean, horizontal layout at the bottom, inviting continued partnership. DESIGN_SPEC: {\n  \"layout\": \"ClosingHero\",\n  \"bg\": \"#6D28D9\",\n  \"accents\": { \"type\": \"leafy-organic\", \"color\": \"#FACC15\", \"pos\": \"corners\" },\n  \"typography\": {\n    \"thank_you\": \"Black 64px #FFFFFF\",\n    \"contact_info\": \"Bold 14px #FACC15\",\n    \"spacing\": \"48px\"\n  }\n}",
+      "description": "We look forward to working with you and building a better digital future together. CONTACT US: hello@storyboard.com | PHONE: +1 (800) 012-3499. VISIT OUR HUB: www.storyboard.com. OFFICE: 100 Creativity Lane, San Francisco, CA."
+    }
+  ]
+}

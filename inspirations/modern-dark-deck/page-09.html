@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Dark Deck - Slide 09</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              branddark: "#141624",
+              brandyellow: "#fbc531",
+              brandorange: "#e67e22",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .arc-line {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.05);
+        stroke-width: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-branddark overflow-hidden font-sans">
+    <div
+      class="relative flex h-[540px] w-[960px] flex-col items-center overflow-hidden p-20"
+    >
+      <!-- Header Area -->
+      <div class="relative z-10 mb-16 flex w-full flex-col items-center">
+        <h2
+          class="text-brandyellow mb-4 text-[12px] font-black tracking-[0.5em] uppercase"
+        >
+          Our Global Network
+        </h2>
+        <h1
+          class="mb-4 text-[56px] font-black tracking-tighter text-white uppercase shadow-sm"
+        >
+          HEADLINE <span class="text-gray-400">SLIDE</span>
+        </h1>
+        <div class="bg-brandyellow h-1 w-16 rounded-full"></div>
+      </div>
+
+      <!-- Main Hubs -->
+      <div class="relative z-10 flex w-full justify-between px-20">
+        <!-- Hub A -->
+        <div class="group flex flex-col items-center">
+          <div
+            class="border-brandyellow/30 relative mb-6 flex h-24 w-24 items-center justify-center rounded-full border bg-white/5 transition-transform group-hover:scale-110"
+          >
+            <div
+              class="border-brandyellow/10 absolute inset-0 rounded-full border-[6px]"
+            ></div>
+            <span class="text-brandyellow text-[32px] font-black">A</span>
+          </div>
+          <h4 class="mb-1 text-[14px] font-black text-white uppercase">
+            North America
+          </h4>
+          <p
+            class="text-[10px] font-bold tracking-widest text-gray-500 uppercase"
+          >
+            Primary Hub
+          </p>
+        </div>
+
+        <!-- Hub B -->
+        <div class="group flex flex-col items-center">
+          <div
+            class="border-brandorange/30 relative mb-6 flex h-24 w-24 items-center justify-center rounded-full border bg-white/5 transition-transform group-hover:scale-110"
+          >
+            <div
+              class="border-brandorange/10 absolute inset-0 rounded-full border-[6px]"
+            ></div>
+            <span class="text-brandorange text-[32px] font-black">B</span>
+          </div>
+          <h4 class="mb-1 text-[14px] font-black text-white uppercase">
+            Europe & MEA
+          </h4>
+          <p
+            class="text-[10px] font-bold tracking-widest text-gray-500 uppercase"
+          >
+            Regional Hub
+          </p>
+        </div>
+
+        <!-- Hub C -->
+        <div class="group flex flex-col items-center">
+          <div
+            class="relative mb-6 flex h-24 w-24 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-transform group-hover:scale-110"
+          >
+            <div
+              class="absolute inset-0 rounded-full border-[6px] border-white/5"
+            ></div>
+            <span class="text-[32px] font-black text-white/40">C</span>
+          </div>
+          <h4 class="mb-1 text-[14px] font-black text-white uppercase">
+            Asia-Pacific
+          </h4>
+          <p
+            class="text-[10px] font-bold tracking-widest text-gray-500 uppercase"
+          >
+            Growth Node
+          </p>
+        </div>
+      </div>
+
+      <!-- Background Arcs -->
+      <div class="pointer-events-none absolute inset-0 z-0">
+        <svg viewBox="0 0 960 540" class="h-full w-full">
+          <path d="M100,270 Q480,-50 860,270" class="arc-line" />
+          <path d="M100,270 Q480,590 860,270" class="arc-line" />
+        </svg>
+      </div>
+
+      <!-- Corner Accent -->
+      <div
+        class="absolute right-[-100px] bottom-[-100px] h-64 w-64 rounded-tl-[150px] border-t-[30px] border-l-[30px] border-white/5"
+      ></div>
+    </div>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

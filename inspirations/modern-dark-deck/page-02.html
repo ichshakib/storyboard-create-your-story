@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Dark Deck - Slide 02</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              branddark: "#141624",
+              brandyellow: "#fbc531",
+              brandorange: "#e67e22",
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body class="bg-branddark overflow-hidden font-sans">
+    <div
+      class="relative flex h-[540px] w-[960px] items-center overflow-hidden p-20"
+    >
+      <!-- Background Accents -->
+      <div
+        class="border-brandyellow/10 absolute top-12 left-12 h-24 w-24 rounded-full border"
+      ></div>
+
+      <!-- Left: Circular Image -->
+      <div class="relative flex w-1/2 items-center justify-center">
+        <div
+          class="border-brandyellow h-[280px] w-[280px] overflow-hidden rounded-full border-[12px] p-4 shadow-2xl"
+        >
+          <div class="h-full w-full overflow-hidden rounded-full bg-gray-800">
+            <img
+              src="/presentation-images/modern-dark-deck/avatar-15.jpg"
+              alt="Professional executive with smiling face"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+        <!-- Decorative curve -->
+        <div
+          class="border-brandyellow/20 absolute -bottom-8 -left-8 h-40 w-40 rounded-bl-[80px] border-b border-l"
+        ></div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="w-1/2 pl-12">
+        <h2
+          class="text-brandyellow mb-4 text-[12px] font-black tracking-[0.3em] uppercase"
+        >
+          Strategic Vision
+        </h2>
+        <h1
+          class="mb-6 text-[48px] leading-tight font-black tracking-tighter text-white uppercase"
+        >
+          HEADLINE<br /><span class="text-gray-400">SLIDE</span>
+        </h1>
+        <div class="bg-brandyellow mb-8 h-1 w-16"></div>
+        <p class="text-[14px] leading-relaxed font-medium text-gray-400">
+          Our vision is to provide unparalleled digital solutions that empower
+          global enterprises to scale efficiently and sustainably. We focus on
+          long-term value creation and technological innovation.
+        </p>
+
+        <div class="mt-12 flex items-center space-x-2">
+          <i data-lucide="arrow-right" class="text-brandyellow h-4 w-4"></i>
+          <span
+            class="text-[10px] font-black tracking-widest text-white uppercase"
+            >Learn More</span
+          >
+        </div>
+      </div>
+
+      <!-- Bottom Decorative Curve -->
+      <div
+        class="border-brandyellow/10 absolute bottom-[-50px] left-1/2 h-[100px] w-[400px] -translate-x-1/2 rounded-t-[200px] border-t"
+      ></div>
+    </div>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

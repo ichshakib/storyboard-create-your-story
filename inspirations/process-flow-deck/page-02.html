@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide 2 - Vertical Delivery Pipeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              outfit: ["Outfit", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                navy: "#2A3A4A",
+                orange: "#C65C17",
+                green: "#2D5A27",
+                red: "#8B1111",
+                yellow: "#F1C40F",
+              },
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .pipe-tip {
+        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(4px);
+      }
+    </style>
+  </head>
+  <body
+    class="flex min-h-screen items-center justify-center overflow-hidden bg-neutral-100 font-sans"
+  >
+    <!-- Fixed Area Container (960x540) -->
+    <div
+      class="relative flex h-[540px] w-[960px] flex-col overflow-hidden bg-white shadow-2xl"
+    >
+      <!-- Header -->
+      <div class="z-20 flex items-end justify-between px-12 pt-10">
+        <div>
+          <h1
+            class="font-outfit text-brand-navy text-2xl leading-none font-black tracking-tighter uppercase"
+          >
+            Systematic Delivery
+          </h1>
+          <p
+            class="mt-1 text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase"
+          >
+            Operational Flow & Pipeline Model
+          </p>
+        </div>
+        <div class="mx-8 mb-1 flex-1 border-b-[3px] border-slate-100"></div>
+        <div
+          class="font-outfit text-brand-navy/30 mb-1 text-[10px] font-black tracking-widest uppercase"
+        >
+          Phase 02 / 2024
+        </div>
+      </div>
+
+      <div class="flex flex-1 items-center px-12">
+        <!-- Left Side: Balanced Title Area -->
+        <div class="flex w-[30%] flex-col">
+          <div class="relative mb-6">
+            <span
+              class="bg-brand-red absolute top-0 -left-4 h-12 w-1 rounded-full"
+            ></span>
+            <h2
+              class="font-outfit text-brand-navy text-[38px] leading-[1.1] font-black uppercase"
+            >
+              Vertical<br />Pipeline
+            </h2>
+          </div>
+          <p
+            class="mb-8 font-sans text-[11px] leading-relaxed font-medium text-slate-500"
+          >
+            Optimizing the transition from market research to global deployment
+            via a high-fidelity operational stream.
+          </p>
+          <div class="flex gap-2">
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-100 bg-slate-50"
+            >
+              <i data-lucide="arrow-right" class="text-brand-red h-4 w-4"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Refined, Balanced Pipeline -->
+        <div
+          class="relative ml-8 flex h-[320px] flex-1 items-end justify-between pb-10"
+        >
+          <!-- Bottom Ground Line -->
+          <div
+            class="absolute right-0 bottom-10 left-0 h-[2px] bg-slate-50"
+          ></div>
+
+          <!-- Pipe 1: Research (Grounded) -->
+          <div
+            class="group relative flex h-full flex-col items-center justify-end"
+          >
+            <div
+              class="mb-4 flex flex-col items-center transition-transform group-hover:-translate-y-2"
+            >
+              <div
+                class="z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-50 bg-white shadow-lg"
+              >
+                <i data-lucide="search" class="text-brand-green h-5 w-5"></i>
+              </div>
+              <div class="mt-2 text-center">
+                <div
+                  class="font-outfit text-brand-navy text-[8px] font-black tracking-widest uppercase"
+                >
+                  Research
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-brand-green/30 group-hover:bg-brand-green/60 h-24 w-[3px] transition-colors"
+            ></div>
+            <div
+              class="bg-brand-green pipe-tip flex h-10 w-12 -translate-y-1 transform items-center justify-center shadow-lg"
+            >
+              <span
+                class="font-outfit text-[10px] font-black text-white opacity-40"
+                >STEP 1</span
+              >
+            </div>
+          </div>
+
+          <!-- Pipe 2: Design -->
+          <div
+            class="group relative flex h-full flex-col items-center justify-end"
+          >
+            <div
+              class="mb-4 flex flex-col items-center transition-transform group-hover:-translate-y-2"
+            >
+              <div
+                class="z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-50 bg-white shadow-lg"
+              >
+                <i data-lucide="pen-tool" class="text-brand-red h-5 w-5"></i>
+              </div>
+              <div class="mt-2 text-center">
+                <div
+                  class="font-outfit text-brand-navy text-[8px] font-black tracking-widest uppercase"
+                >
+                  Design
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-brand-red/30 group-hover:bg-brand-red/60 h-32 w-[3px] transition-colors"
+            ></div>
+            <div
+              class="bg-brand-red pipe-tip flex h-10 w-12 -translate-y-1 transform items-center justify-center shadow-lg"
+            >
+              <span
+                class="font-outfit text-[10px] font-black text-white opacity-40"
+                >STEP 2</span
+              >
+            </div>
+          </div>
+
+          <!-- Pipe 3: Prototype -->
+          <div
+            class="group relative flex h-full flex-col items-center justify-end"
+          >
+            <div
+              class="mb-4 flex flex-col items-center transition-transform group-hover:-translate-y-2"
+            >
+              <div
+                class="z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-50 bg-white shadow-lg"
+              >
+                <i data-lucide="layers" class="text-brand-navy h-5 w-5"></i>
+              </div>
+              <div class="mt-2 text-center">
+                <div
+                  class="font-outfit text-brand-navy text-[8px] font-black tracking-widest uppercase"
+                >
+                  Prototype
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-brand-navy/30 group-hover:bg-brand-navy/60 h-40 w-[3px] transition-colors"
+            ></div>
+            <div
+              class="bg-brand-navy pipe-tip flex h-10 w-12 -translate-y-1 transform items-center justify-center shadow-lg"
+            >
+              <span
+                class="font-outfit text-[10px] font-black text-white opacity-40"
+                >STEP 3</span
+              >
+            </div>
+          </div>
+
+          <!-- Pipe 4: Testing -->
+          <div
+            class="group relative flex h-full flex-col items-center justify-end"
+          >
+            <div
+              class="mb-4 flex flex-col items-center transition-transform group-hover:-translate-y-2"
+            >
+              <div
+                class="z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-50 bg-white shadow-lg"
+              >
+                <i data-lucide="activity" class="text-brand-orange h-5 w-5"></i>
+              </div>
+              <div class="mt-2 text-center">
+                <div
+                  class="font-outfit text-brand-navy text-[8px] font-black tracking-widest uppercase"
+                >
+                  Testing
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-brand-orange/30 group-hover:bg-brand-orange/60 h-28 w-[3px] transition-colors"
+            ></div>
+            <div
+              class="bg-brand-orange pipe-tip flex h-10 w-12 -translate-y-1 transform items-center justify-center shadow-lg"
+            >
+              <span
+                class="font-outfit text-[10px] font-black text-white opacity-40"
+                >STEP 4</span
+              >
+            </div>
+          </div>
+
+          <!-- Pipe 5: Delivery -->
+          <div
+            class="group relative flex h-full flex-col items-center justify-end"
+          >
+            <div
+              class="mb-4 flex flex-col items-center transition-transform group-hover:-translate-y-2"
+            >
+              <div
+                class="z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-50 bg-white shadow-lg"
+              >
+                <i data-lucide="globe" class="text-brand-yellow h-5 w-5"></i>
+              </div>
+              <div class="mt-2 text-center">
+                <div
+                  class="font-outfit text-brand-navy text-[8px] font-black tracking-widest uppercase"
+                >
+                  Delivery
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-brand-yellow/30 group-hover:bg-brand-yellow/60 h-36 w-[3px] transition-colors"
+            ></div>
+            <div
+              class="bg-brand-yellow pipe-tip flex h-10 w-12 -translate-y-1 transform items-center justify-center shadow-lg"
+            >
+              <span
+                class="font-outfit text-[10px] font-black text-white opacity-40"
+                >STEP 5</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="z-20 flex items-center justify-end px-12 pb-10">
+        <div class="flex items-center gap-3">
+          <div class="text-right">
+            <div
+              class="font-outfit text-brand-navy text-[10px] leading-none font-black tracking-widest uppercase"
+            >
+              Global Deployment
+            </div>
+            <div
+              class="mt-1 text-[8px] font-bold tracking-widest text-slate-400 uppercase"
+            >
+              Confidential Internal Document
+            </div>
+          </div>
+          <div class="mx-2 h-10 w-[2px] bg-slate-100"></div>
+          <div
+            class="bg-brand-navy font-outfit flex h-10 w-10 items-center justify-center rounded-lg text-sm font-black text-white shadow-lg"
+          >
+            02
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        lucide.createIcons()
+      })
+    </script>
+  </body>
+</html>

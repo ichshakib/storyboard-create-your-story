@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide 7 - Business Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandgreen: "#2ecc71",
+              branddark: "#1e272e",
+              brandblack: "#111827",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .clip-hex {
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden font-sans">
+    <div
+      class="relative flex h-[540px] w-[960px] items-stretch overflow-hidden bg-white"
+    >
+      <!-- Left Content Section -->
+      <div class="z-10 flex w-[60%] flex-col justify-center bg-white p-16">
+        <h2
+          class="text-branddark mb-2 text-[42px] leading-none font-black uppercase"
+        >
+          BUSINESS <span class="text-brandgreen">STRATEGY</span>
+        </h2>
+        <div class="bg-brandgreen mb-10 h-[2px] w-24"></div>
+
+        <p class="mb-12 max-w-lg text-[13px] leading-relaxed text-gray-500">
+          Our strategy is built on three pillars: Adaptive Leadership,
+          Data-Driven Insights, and Customer-Centric Innovation. We prioritize
+          sustainable value creation.
+        </p>
+
+        <div class="space-y-6">
+          <div class="flex items-start">
+            <div
+              class="bg-brandgreen clip-hex mt-1 mr-4 px-3 py-1 text-[10px] font-black text-white"
+            >
+              PHASE 1
+            </div>
+            <div class="flex-1">
+              <h4 class="text-branddark mb-1 text-[14px] font-black uppercase">
+                Adaptive Leadership
+              </h4>
+              <p class="text-[11px] text-gray-400">
+                Navigating complex market shifts with agility and
+                forward-thinking management.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div
+              class="bg-brandgreen clip-hex mt-1 mr-4 px-3 py-1 text-[10px] font-black text-white"
+            >
+              PHASE 2
+            </div>
+            <div class="flex-1">
+              <h4 class="text-branddark mb-1 text-[14px] font-black uppercase">
+                Data-Driven Insights
+              </h4>
+              <p class="text-[11px] text-gray-400">
+                Leveraging advanced analytics to make informed decisions and
+                optimize ROI.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div
+              class="bg-brandgreen clip-hex mt-1 mr-4 px-3 py-1 text-[10px] font-black text-white"
+            >
+              PHASE 3
+            </div>
+            <div class="flex-1">
+              <h4 class="text-branddark mb-1 text-[14px] font-black uppercase">
+                Customer-Centric Innovation
+              </h4>
+              <p class="text-[11px] text-gray-400">
+                Designing solutions that solve real-world problems for our
+                global users.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Image Cluster (Cascading Hexagons) -->
+      <div
+        class="bg-brandgreen/5 border-brandgreen/10 relative flex w-[40%] items-center justify-center border-l"
+      >
+        <div class="relative h-[450px] w-[300px]">
+          <!-- Large Hex Top -->
+          <div
+            class="clip-hex bg-brandgreen absolute top-0 right-4 h-[200px] w-[180px] p-1 transition-transform duration-500 hover:-translate-y-2"
+          >
+            <div class="clip-hex h-full w-full bg-white">
+              <img
+                src="/presentation-images/growth-business-deck/slide-7-img-1.jpg"
+                alt="Modern office architecture and design"
+                class="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Mid Hex Left -->
+          <div
+            class="clip-hex bg-branddark absolute top-[160px] left-4 z-10 h-[160px] w-[140px] p-1 transition-transform duration-500 hover:translate-x-2"
+          >
+            <div class="clip-hex h-full w-full bg-white">
+              <img
+                src="/presentation-images/growth-business-deck/slide-7-img-2.jpg"
+                alt="Technical chart and data dashboard"
+                class="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Small Hex Bottom Right -->
+          <div
+            class="clip-hex bg-brandgreen absolute right-10 bottom-10 h-[140px] w-[120px] p-1 transition-transform duration-500 hover:translate-y-2"
+          >
+            <div class="clip-hex h-full w-full bg-white">
+              <img
+                src="/presentation-images/growth-business-deck/slide-7-img-3.jpg"
+                alt="Professional team collaboration"
+                class="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Background accents -->
+          <div
+            class="border-brandgreen/20 clip-hex absolute top-1/2 left-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 border-2"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Top Decorative Dots -->
+      <div class="absolute top-8 right-12 flex space-x-1">
+        <div class="bg-brandgreen h-2 w-2 rounded-full"></div>
+        <div class="bg-branddark h-2 w-2 rounded-full opacity-20"></div>
+        <div class="bg-branddark h-2 w-2 rounded-full opacity-10"></div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

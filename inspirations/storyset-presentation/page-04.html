@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storyset Presentation - Slide 04</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mainpurple: "#522583",
+              lightpurple: "#9A7FB8",
+              brandyellow: "#ffcc33",
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body class="overflow-hidden bg-white font-sans">
+    <div
+      class="relative flex h-[540px] w-[960px] items-center overflow-hidden p-20"
+    >
+      <!-- Background Waves -->
+      <svg
+        class="absolute bottom-0 left-0 h-40 w-full"
+        viewBox="0 0 960 160"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,100 C300,40 700,160 960,100 L960,160 L0,160 Z"
+          fill="#522583"
+        />
+        <path
+          d="M0,80 C200,140 500,60 960,120 L960,160 L0,160 Z"
+          fill="#522583"
+          opacity="0.4"
+        />
+      </svg>
+
+      <!-- Left: Storyset Image -->
+      <div class="relative z-10 flex w-1/2 items-center justify-center">
+        <img
+          src="/storyset/Take Away-pana.svg"
+          alt="Woman holding coffee"
+          class="w-full max-w-[380px]"
+        />
+        <!-- Abstract circles -->
+        <div
+          class="border-mainpurple/10 absolute top-10 left-10 h-20 w-20 rounded-full border-2"
+        ></div>
+        <div
+          class="border-mainpurple/5 absolute right-10 bottom-10 h-32 w-32 rounded-full border"
+        ></div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="relative z-10 w-1/2 pl-12">
+        <h1
+          class="text-brandyellow mb-6 text-6xl font-black tracking-tight uppercase"
+        >
+          ABOUT US
+        </h1>
+        <p class="text-lg leading-relaxed font-medium text-gray-600">
+          We are a diverse team of creators, engineers, and strategists
+          dedicated to delivering high-quality digital experiences that resonate
+          with users worldwide. Our culture is built on creativity and
+          collaboration.
+        </p>
+        <div class="bg-mainpurple mt-8 h-1 w-16"></div>
+      </div>
+
+      <!-- Corner Accent -->
+      <div class="absolute top-0 right-0 p-12">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+          <path
+            d="M0,0 Q30,60 60,0"
+            fill="none"
+            stroke="#ffcc33"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+    </div>
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

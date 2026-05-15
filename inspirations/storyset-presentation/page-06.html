@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storyset Presentation - Slide 06</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mainpurple: "#522583",
+              brandblue: "#3abef9",
+              brandyellow: "#ffcc33",
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body class="overflow-hidden bg-white font-sans">
+    <div
+      class="relative flex h-[540px] w-[960px] flex-row-reverse items-center overflow-hidden p-20"
+    >
+      <!-- Background Abstract Waves -->
+      <svg
+        class="pointer-events-none absolute inset-0 h-full w-full opacity-10"
+        viewBox="0 0 960 540"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M960,0 C700,100 800,400 960,540 L960,540 L0,540 L0,0 Z"
+          fill="#522583"
+        />
+        <path d="M0,0 C300,50 100,200 0,400 Z" fill="#ffcc33" />
+      </svg>
+
+      <!-- Right: Content -->
+      <div class="relative z-10 w-1/2 pl-12">
+        <h1
+          class="text-brandyellow mb-6 text-6xl font-black tracking-tight uppercase"
+        >
+          RESEARCH
+        </h1>
+        <p class="text-lg leading-relaxed font-medium text-gray-600">
+          Market research indicates a 40% increase in digital adoption across
+          our target demographics, highlighting a key opportunity for expansion
+          and technological integration.
+        </p>
+        <div class="mt-8 flex items-center space-x-4">
+          <div
+            class="bg-brandblue/10 border-brandblue/20 rounded-xl border p-4"
+          >
+            <span class="text-brandblue text-2xl font-black">40%</span>
+            <p class="text-[10px] font-bold text-gray-400 uppercase">
+              Growth Rate
+            </p>
+          </div>
+          <div
+            class="bg-mainpurple/10 border-mainpurple/20 rounded-xl border p-4"
+          >
+            <span class="text-mainpurple text-2xl font-black">2024</span>
+            <p class="text-[10px] font-bold text-gray-400 uppercase">
+              Target Year
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left: Storyset Image -->
+      <div
+        class="relative z-10 flex w-1/2 flex-col items-center justify-center"
+      >
+        <img
+          src="/storyset/Data report-pana.svg"
+          alt="Man researching at blue desk"
+          class="w-full max-w-[420px]"
+        />
+        <!-- Blue Desk Accent (Tailwind) -->
+        <div class="bg-brandblue -mt-2 h-4 w-64 rounded-full opacity-50"></div>
+      </div>
+    </div>
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>
