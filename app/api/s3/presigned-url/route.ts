@@ -22,8 +22,16 @@ export async function POST(req: Request) {
     }
 
     // Generate a unique key for the file
+    // Sanitize filename to prevent directory traversal
+    const sanitizedFilename = filename.replace(/^(\.\.\/)+/, '').replace(/[\/\\?%*:|"<>]/g, '-')
+    // Validate contentType (allow common image/document formats)
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf']
+    if (!allowedTypes.includes(contentType)) {
+      return NextResponse.json({ error: 'Invalid content type' }, { status: 400 })
+    }
+
     const timestamp = Date.now()
-    const key = `uploads/${session.user.id}/${timestamp}-${filename}`
+    const key = `uploads/${session.user.id}/${timestamp}-${sanitizedFilename}`
 
     const url = await getPresignedPostUrl(key, contentType)
 
