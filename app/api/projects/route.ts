@@ -10,10 +10,13 @@ import { deleteMultipleFromS3 } from "@/lib/s3"
  */
 export async function POST(req: Request) {
   try {
-    // 1. AUTHENTICATION: Ensure the user is logged in
     const session = await auth.api.getSession({
       headers: await headers(),
     })
+
+    if (!session) {
+      return new NextResponse(\"Unauthorized\", { status: 401 })
+    }
 
     const body = await req.json()
     const { title, slides, description } = body
@@ -21,9 +24,9 @@ export async function POST(req: Request) {
     // 2. DATABASE PERSISTENCE: Create project and its initial slides in a single transaction
     const project = await prisma.project.create({
       data: {
-        title: title || "Untitled Storyboard",
+        title: title || \"Untitled Storyboard\",
         description: description || null,
-        userId: session?.user?.id || null,
+        userId: session.user.id,
         slides: {
           create: (slides || []).map(
             (
