@@ -2,6 +2,7 @@ import { ai } from "./client"
 import { CHAT_MODEL } from "./constants"
 import { zodToJsonSchema } from "zod-to-json-schema"
 import { GenerateObjectOptions } from "./types"
+import { Content, Schema } from "@google/genai"
 
 export const generateObject = async (options: GenerateObjectOptions) => {
   const {
@@ -15,7 +16,7 @@ export const generateObject = async (options: GenerateObjectOptions) => {
   const finalSchema =
     jsonSchema ||
     (schema
-      ? zodToJsonSchema(schema as unknown as any, {
+      ? zodToJsonSchema(schema as unknown as Parameters<typeof zodToJsonSchema>[0], {
           target: "openApi3",
           $refStrategy: "none",
           definitionPath: "definitions",
@@ -37,19 +38,19 @@ export const generateObject = async (options: GenerateObjectOptions) => {
   const input = lastMessage ? lastMessage.content : ""
 
   // History is everything else
-  const history = chatHistory.slice(0, -1).map((msg) => ({
+  const history: Content[] = chatHistory.slice(0, -1).map((msg) => ({
     role: msg.role === "assistant" ? "model" : "user",
     parts: [{ text: msg.content }],
   }))
 
   const chat = ai.chats.create({
     model: CHAT_MODEL,
-    history: history as any,
+    history: history,
     config: {
       systemInstruction: systemInstruction,
       temperature,
       responseMimeType: "application/json",
-      responseSchema: finalSchema as any,
+      responseSchema: finalSchema as Schema,
     },
   })
 

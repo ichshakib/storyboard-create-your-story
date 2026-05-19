@@ -63,7 +63,10 @@ export function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="relative border-t border-border bg-background antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+    <section
+      id="pricing"
+      className="border-border bg-background relative border-t antialiased selection:bg-emerald-500/30 selection:text-emerald-200"
+    >
       {/* Subtle Grid Background & Ambient Glow */}
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-40 dark:opacity-100"
@@ -78,26 +81,26 @@ export function Pricing() {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
         {/* Title area */}
-        <div className="mb-16 flex flex-col items-center text-center space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
+        <div className="mb-16 flex flex-col items-center space-y-4 text-center">
+          <div className="border-border bg-muted text-muted-foreground inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold">
             <Icon icon="solar:tag-linear" />
             Pricing strategy
           </div>
-          <h2 className="text-3xl leading-tight font-medium tracking-tight text-foreground lg:text-4xl">
-            Sleek tiers, <span className="text-emerald-500">scaled to fit.</span>
+          <h2 className="text-foreground text-3xl leading-tight font-medium tracking-tight lg:text-4xl">
+            Sleek tiers,{" "}
+            <span className="text-emerald-500">scaled to fit.</span>
           </h2>
-          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            Scale your visual outputs without abstract friction. Upgrade or downgrade seamlessly as your pipeline needs evolve.
+          <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
+            Scale your visual outputs without abstract friction. Upgrade or
+            downgrade seamlessly as your pipeline needs evolve.
           </p>
 
           {/* Billing Toggle */}
           <div className="flex flex-col items-center gap-3 pt-2">
-            <div
-              className="relative inline-flex w-max rounded-full border border-border bg-muted p-1 shadow-inner"
-            >
+            <div className="border-border bg-muted relative inline-flex w-max rounded-full border p-1 shadow-inner">
               {/* Sliding Indicator */}
               <div
-                className="absolute top-1 bottom-1 w-[80px] rounded-full border border-border bg-background shadow-sm transition-transform duration-300 ease-out"
+                className="border-border bg-background absolute top-1 bottom-1 w-[80px] rounded-full border shadow-sm transition-transform duration-300 ease-out"
                 style={{
                   transform: isAnnually ? "translateX(80px)" : "translateX(0)",
                 }}
@@ -132,10 +135,10 @@ export function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`relative rounded-[2rem] flex flex-col justify-between p-8 backdrop-blur-md transition-all duration-300 ${
+              className={`relative flex flex-col justify-between rounded-[2rem] p-8 backdrop-blur-md transition-all duration-300 ${
                 tier.recommended
-                  ? "bg-gradient-to-b from-emerald-500/10 via-emerald-950/5 to-card border border-emerald-500/30 shadow-lg shadow-emerald-950/20"
-                  : "bg-card/50 border border-border hover:border-emerald-500/20 hover:bg-card"
+                  ? "to-card border border-emerald-500/30 bg-gradient-to-b from-emerald-500/10 via-emerald-950/5 shadow-lg shadow-emerald-950/20"
+                  : "bg-card/50 border-border hover:bg-card border hover:border-emerald-500/20"
               }`}
             >
               {tier.recommended && (
@@ -146,35 +149,39 @@ export function Pricing() {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-medium tracking-tight text-foreground mb-1.5">
+                  <h3 className="text-foreground mb-1.5 text-lg font-medium tracking-tight">
                     {tier.name}
                   </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-xs leading-relaxed">
                     {tier.description}
                   </p>
                 </div>
 
                 <div className="flex items-end gap-1 overflow-hidden">
                   <span
-                    className={`text-3xl font-semibold tracking-tight text-foreground transition-all duration-150 ease-out ${
-                      animatePrice ? "translate-y-2 opacity-0" : "translate-y-0 opacity-100"
+                    className={`text-foreground text-3xl font-semibold tracking-tight transition-all duration-150 ease-out ${
+                      animatePrice
+                        ? "translate-y-2 opacity-0"
+                        : "translate-y-0 opacity-100"
                     }`}
                     style={{ fontFamily: "'Outfit', sans-serif" }}
                   >
                     ${isAnnually ? tier.priceAnnually : tier.priceMonthly}
                   </span>
-                  <span className="text-xs font-medium text-muted-foreground pb-1">
+                  <span className="text-muted-foreground pb-1 text-xs font-medium">
                     / mo
                   </span>
                 </div>
 
-                <ul className="space-y-3 text-xs text-muted-foreground border-t border-border pt-6">
+                <ul className="text-muted-foreground border-border space-y-3 border-t pt-6 text-xs">
                   {tier.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <Icon
                         icon="solar:check-circle-linear"
-                        className={`text-base shrink-0 mt-0.5 ${
-                          tier.recommended ? "text-emerald-500" : "text-muted-foreground"
+                        className={`mt-0.5 shrink-0 text-base ${
+                          tier.recommended
+                            ? "text-emerald-500"
+                            : "text-muted-foreground"
                         }`}
                       />
                       <span>{feature}</span>
@@ -189,7 +196,7 @@ export function Pricing() {
                     className={`w-full rounded-xl py-3 text-xs font-semibold tracking-wide transition-all ${
                       tier.recommended
                         ? "bg-emerald-500 text-black shadow-md hover:bg-emerald-400"
-                        : "border border-border bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                        : "border-border bg-secondary text-secondary-foreground hover:bg-secondary/80 border"
                     }`}
                   >
                     {tier.actionText}

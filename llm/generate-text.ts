@@ -1,6 +1,7 @@
 import { ai } from "./client"
 import { CHAT_MODEL } from "./constants"
 import { GenerateTextOptions } from "./types"
+import { Content } from "@google/genai"
 
 /**
  * Generates text using Google GenAI through the official SDK.
@@ -24,14 +25,14 @@ export const generateText = async (options: GenerateTextOptions) => {
   const lastMessage = chatHistory[chatHistory.length - 1]
   const input = lastMessage ? lastMessage.content : ""
 
-  const history = chatHistory.slice(0, -1).map((msg) => ({
+  const history: Content[] = chatHistory.slice(0, -1).map((msg) => ({
     role: msg.role === "assistant" ? "model" : "user",
     parts: [{ text: msg.content }],
   }))
 
   const chat = ai.chats.create({
     model: CHAT_MODEL,
-    history: history as any,
+    history: history,
     config: {
       systemInstruction: systemInstruction,
       temperature,

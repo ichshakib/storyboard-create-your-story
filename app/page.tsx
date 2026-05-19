@@ -15,7 +15,7 @@ import { LandingFooter } from "@/components/landing/landing-footer"
  */
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background font-sans tracking-tight text-foreground selection:bg-[#10B981] selection:text-white">
+    <div className="bg-background text-foreground min-h-screen font-sans tracking-tight selection:bg-[#10B981] selection:text-white">
       {/* Dynamic Aura Background */}
       <UnicornBackground />
 

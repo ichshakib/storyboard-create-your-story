@@ -32,7 +32,7 @@ export function UnicornBackground() {
 
   return (
     <div
-      className="aura-background-component fixed top-0 -z-10 h-screen w-full dark:opacity-100 opacity-20 transition-opacity duration-500"
+      className="aura-background-component fixed top-0 -z-10 h-screen w-full opacity-20 transition-opacity duration-500 dark:opacity-100"
       style={{
         maskImage:
           "linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)",

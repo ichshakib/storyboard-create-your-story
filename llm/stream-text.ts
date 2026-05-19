@@ -1,4 +1,4 @@
-import { ai, Content } from "./client"
+import { ai, Content, Tool } from "./client"
 import { CHAT_MODEL } from "./constants"
 import prisma from "@/lib/prisma"
 import { deductCredits } from "@/lib/credits"
@@ -15,7 +15,7 @@ export interface StreamTextOptions {
   projectId: string
   userId: string
   systemInstruction?: string
-  tools?: any[]
+  tools?: Tool[]
 }
 
 interface ProjectSlide {
@@ -87,7 +87,7 @@ export function streamText(options: StreamTextOptions) {
 
   const chat = ai.chats.create({
     model: CHAT_MODEL,
-    history: history as any,
+    history: history as Content[],
     config: {
       systemInstruction,
       tools,
@@ -98,13 +98,13 @@ export function streamText(options: StreamTextOptions) {
     let callExecutionCount = 0
     const MAX_CALLS = 5
     let hasChanges = false
-    let currentInput: any = { message: input }
+    let currentInput: Parameters<typeof chat.sendMessageStream>[0] = { message: input }
 
     while (callExecutionCount < MAX_CALLS) {
       const responseStream = await chat.sendMessageStream(currentInput)
 
-      let functionCalls: any[] = []
-      let lastResponse: any = null
+      const functionCalls: NonNullable<Awaited<ReturnType<typeof chat.sendMessage>>["functionCalls"]> = []
+      let lastResponse: Awaited<ReturnType<typeof chat.sendMessage>> | null = null
 
       for await (const chunk of responseStream) {
         lastResponse = chunk
@@ -147,7 +147,7 @@ export function streamText(options: StreamTextOptions) {
             args: (args as Record<string, unknown>) || {},
           })
 
-          let toolOutput: any = {
+          let toolOutput: Record<string, unknown> = {
             success: true,
           }
 

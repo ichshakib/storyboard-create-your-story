@@ -34,12 +34,15 @@ export function parseMarkdown(text: string): React.ReactNode {
   const parseInlineStyles = (lineText: string): React.ReactNode[] => {
     const parts: React.ReactNode[] = []
     const codeTokens = lineText.split("`")
-    
+
     codeTokens.forEach((token, codeIdx) => {
       const isCode = codeIdx % 2 === 1
       if (isCode) {
         parts.push(
-          <code key={`code-${codeIdx}`} className="bg-muted-foreground/15 dark:bg-muted-foreground/20 px-1 py-0.5 rounded text-[12px] font-mono">
+          <code
+            key={`code-${codeIdx}`}
+            className="bg-muted-foreground/15 dark:bg-muted-foreground/20 rounded px-1 py-0.5 font-mono text-[12px]"
+          >
             {token}
           </code>
         )
@@ -48,13 +51,27 @@ export function parseMarkdown(text: string): React.ReactNode {
         boldTokens.forEach((boldToken, boldIdx) => {
           const isBold = boldIdx % 2 === 1
           if (isBold) {
-            parts.push(<strong key={`bold-${codeIdx}-${boldIdx}`} className="font-semibold text-foreground">{boldToken}</strong>)
+            parts.push(
+              <strong
+                key={`bold-${codeIdx}-${boldIdx}`}
+                className="text-foreground font-semibold"
+              >
+                {boldToken}
+              </strong>
+            )
           } else {
             const italicTokens = boldToken.split("*")
             italicTokens.forEach((italicToken, italicIdx) => {
               const isItalic = italicIdx % 2 === 1
               if (isItalic) {
-                parts.push(<em key={`italic-${codeIdx}-${boldIdx}-${italicIdx}`} className="italic">{italicToken}</em>)
+                parts.push(
+                  <em
+                    key={`italic-${codeIdx}-${boldIdx}-${italicIdx}`}
+                    className="italic"
+                  >
+                    {italicToken}
+                  </em>
+                )
               } else {
                 parts.push(italicToken)
               }
@@ -63,7 +80,7 @@ export function parseMarkdown(text: string): React.ReactNode {
         })
       }
     })
-    
+
     return parts
   }
 
@@ -71,7 +88,10 @@ export function parseMarkdown(text: string): React.ReactNode {
     if (line.trim().startsWith("```")) {
       if (inCodeBlock) {
         elements.push(
-          <pre key={`codeblock-${index}`} className="bg-muted border rounded-lg p-3 my-2 text-xs font-mono overflow-x-auto text-foreground leading-normal">
+          <pre
+            key={`codeblock-${index}`}
+            className="bg-muted text-foreground my-2 overflow-x-auto rounded-lg border p-3 font-mono text-xs leading-normal"
+          >
             <code>{codeBlockLines.join("\n")}</code>
           </pre>
         )
@@ -90,12 +110,19 @@ export function parseMarkdown(text: string): React.ReactNode {
 
     if (line.startsWith("### ")) {
       if (inList) {
-        elements.push(<ul key={`list-${index}`} className="list-disc pl-5 my-2 space-y-1">{listItems}</ul>)
+        elements.push(
+          <ul key={`list-${index}`} className="my-2 list-disc space-y-1 pl-5">
+            {listItems}
+          </ul>
+        )
         listItems = []
         inList = false
       }
       elements.push(
-        <h3 key={`h3-${index}`} className="text-[14px] font-bold text-foreground mt-3 mb-1">
+        <h3
+          key={`h3-${index}`}
+          className="text-foreground mt-3 mb-1 text-[14px] font-bold"
+        >
           {parseInlineStyles(line.slice(4))}
         </h3>
       )
@@ -104,24 +131,35 @@ export function parseMarkdown(text: string): React.ReactNode {
 
     if (line.startsWith("## ")) {
       if (inList) {
-        elements.push(<ul key={`list-${index}`} className="list-disc pl-5 my-2 space-y-1">{listItems}</ul>)
+        elements.push(
+          <ul key={`list-${index}`} className="my-2 list-disc space-y-1 pl-5">
+            {listItems}
+          </ul>
+        )
         listItems = []
         inList = false
       }
       elements.push(
-        <h2 key={`h2-${index}`} className="text-[15px] font-bold text-foreground mt-4 mb-1.5 border-b pb-0.5">
+        <h2
+          key={`h2-${index}`}
+          className="text-foreground mt-4 mb-1.5 border-b pb-0.5 text-[15px] font-bold"
+        >
           {parseInlineStyles(line.slice(3))}
         </h2>
       )
       return
     }
 
-    const isBullet = line.trim().startsWith("- ") || line.trim().startsWith("* ")
+    const isBullet =
+      line.trim().startsWith("- ") || line.trim().startsWith("* ")
     if (isBullet) {
       inList = true
       const content = line.trim().slice(2)
       listItems.push(
-        <li key={`li-${index}`} className="text-[13px] leading-relaxed text-muted-foreground">
+        <li
+          key={`li-${index}`}
+          className="text-muted-foreground text-[13px] leading-relaxed"
+        >
           {parseInlineStyles(content)}
         </li>
       )
@@ -129,14 +167,21 @@ export function parseMarkdown(text: string): React.ReactNode {
     }
 
     if (inList && !isBullet) {
-      elements.push(<ul key={`list-${index}`} className="list-disc pl-5 my-2 space-y-1">{listItems}</ul>)
+      elements.push(
+        <ul key={`list-${index}`} className="my-2 list-disc space-y-1 pl-5">
+          {listItems}
+        </ul>
+      )
       listItems = []
       inList = false
     }
 
     if (line.trim().length > 0) {
       elements.push(
-        <p key={`p-${index}`} className="text-[13px] leading-relaxed text-muted-foreground my-1">
+        <p
+          key={`p-${index}`}
+          className="text-muted-foreground my-1 text-[13px] leading-relaxed"
+        >
           {parseInlineStyles(line)}
         </p>
       )
@@ -146,12 +191,19 @@ export function parseMarkdown(text: string): React.ReactNode {
   })
 
   if (inList) {
-    elements.push(<ul key={`list-end`} className="list-disc pl-5 my-2 space-y-1">{listItems}</ul>)
+    elements.push(
+      <ul key={`list-end`} className="my-2 list-disc space-y-1 pl-5">
+        {listItems}
+      </ul>
+    )
   }
 
   if (inCodeBlock && codeBlockLines.length > 0) {
     elements.push(
-      <pre key={`codeblock-end`} className="bg-muted border rounded-lg p-3 my-2 text-xs font-mono overflow-x-auto text-foreground leading-normal">
+      <pre
+        key={`codeblock-end`}
+        className="bg-muted text-foreground my-2 overflow-x-auto rounded-lg border p-3 font-mono text-xs leading-normal"
+      >
         <code>{codeBlockLines.join("\n")}</code>
       </pre>
     )

@@ -249,7 +249,13 @@ function EditorContent() {
   // Monitor for initial prompt to start the AI generation flow
   const calledOutlineRef = useRef(false)
   useEffect(() => {
-    if (prompt && !loading && !project?.outline && !isGeneratingOutline && !error) {
+    if (
+      prompt &&
+      !loading &&
+      !project?.outline &&
+      !isGeneratingOutline &&
+      !error
+    ) {
       if (calledOutlineRef.current) return
       calledOutlineRef.current = true
       Promise.resolve().then(() => setLastPrompt(prompt))

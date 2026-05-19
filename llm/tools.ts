@@ -91,7 +91,8 @@ export const STORYBOARD_TOOLS: Tool[] = [
       },
       {
         name: "get_project_details",
-        description: "Retrieve the current state of the storyboard project, including title, description, and list of slides (with their database IDs, sequential indices, titles, prompt visual blueprints, descriptions, and whether HTML slides exist).",
+        description:
+          "Retrieve the current state of the storyboard project, including title, description, and list of slides (with their database IDs, sequential indices, titles, prompt visual blueprints, descriptions, and whether HTML slides exist).",
         parameters: {
           type: Type.OBJECT,
           properties: {},

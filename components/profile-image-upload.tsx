@@ -28,7 +28,9 @@ export function ProfileImageUpload({
     if (src && src.startsWith("uploads/")) {
       const fetchSignedUrl = async () => {
         try {
-          const res = await fetch(`/api/s3/signed-url?key=${encodeURIComponent(src)}`)
+          const res = await fetch(
+            `/api/s3/signed-url?key=${encodeURIComponent(src)}`
+          )
           if (res.ok) {
             const data = await res.json()
             setDisplaySrc(data.url)
@@ -39,11 +41,13 @@ export function ProfileImageUpload({
       }
       fetchSignedUrl()
     } else {
-      setDisplaySrc(src || null)
+      Promise.resolve().then(() => setDisplaySrc(src || null))
     }
   }, [src])
 
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = event.target.files?.[0]
     if (!file) return
 
@@ -118,16 +122,24 @@ export function ProfileImageUpload({
   }
 
   return (
-    <div className={`relative group inline-block ${className}`}>
-      <Avatar className="h-24 w-24 border-2 border-border/50 shadow-sm transition-all duration-300 group-hover:opacity-75">
-        <AvatarImage src={displaySrc || ""} alt={name || "User"} className="object-cover" />
+    <div className={`group relative inline-block ${className}`}>
+      <Avatar className="border-border/50 h-24 w-24 border-2 shadow-sm transition-all duration-300 group-hover:opacity-75">
+        <AvatarImage
+          src={displaySrc || ""}
+          alt={name || "User"}
+          className="object-cover"
+        />
         <AvatarFallback className="bg-primary/5 text-primary text-xl font-bold">
-          {name ? name.substring(0, 2).toUpperCase() : <User className="h-8 w-8" />}
+          {name ? (
+            name.substring(0, 2).toUpperCase()
+          ) : (
+            <User className="h-8 w-8" />
+          )}
         </AvatarFallback>
       </Avatar>
 
       {/* Overlay */}
-      <div 
+      <div
         className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-full bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         onClick={() => !isUploading && fileInputRef.current?.click()}
       >

@@ -13,13 +13,17 @@ interface UserAvatarProps {
 }
 
 export function UserAvatar({ user, className }: UserAvatarProps) {
-  const [displaySrc, setDisplaySrc] = React.useState<string | null>(user.image || null)
+  const [displaySrc, setDisplaySrc] = React.useState<string | null>(
+    user.image || null
+  )
 
   React.useEffect(() => {
     if (user.image && user.image.startsWith("uploads/")) {
       const fetchSignedUrl = async () => {
         try {
-          const res = await fetch(`/api/s3/signed-url?key=${encodeURIComponent(user.image as string)}`)
+          const res = await fetch(
+            `/api/s3/signed-url?key=${encodeURIComponent(user.image as string)}`
+          )
           if (res.ok) {
             const data = await res.json()
             setDisplaySrc(data.url)
@@ -30,15 +34,23 @@ export function UserAvatar({ user, className }: UserAvatarProps) {
       }
       fetchSignedUrl()
     } else {
-      setDisplaySrc(user.image || null)
+      Promise.resolve().then(() => setDisplaySrc(user.image || null))
     }
   }, [user.image])
 
   return (
     <Avatar className={className}>
-      <AvatarImage src={displaySrc || ""} alt={user.name || "User"} className="object-cover" />
+      <AvatarImage
+        src={displaySrc || ""}
+        alt={user.name || "User"}
+        className="object-cover"
+      />
       <AvatarFallback className="bg-primary/5 text-primary font-bold">
-        {user.name ? user.name.substring(0, 2).toUpperCase() : <User className="h-4 w-4" />}
+        {user.name ? (
+          user.name.substring(0, 2).toUpperCase()
+        ) : (
+          <User className="h-4 w-4" />
+        )}
       </AvatarFallback>
     </Avatar>
   )

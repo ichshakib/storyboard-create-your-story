@@ -4,7 +4,10 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence, Reorder } from "framer-motion"
 import { useChat } from "@/hooks/use-chat"
-import { MessageResponse, parseMarkdown } from "@/components/ai-elements/message"
+import {
+  MessageResponse,
+  parseMarkdown,
+} from "@/components/ai-elements/message"
 import {
   ChevronLeft,
   Sparkles,
@@ -130,7 +133,7 @@ const AutoResizeTextarea = ({
     if (textarea) {
       textarea.style.height = "auto"
       const scrollHeight = textarea.scrollHeight
-      
+
       let finalHeight = scrollHeight
       if (typeof window !== "undefined") {
         const computedMaxHeight = window.getComputedStyle(textarea).maxHeight
@@ -144,7 +147,7 @@ const AutoResizeTextarea = ({
           }
         }
       }
-      
+
       textarea.style.height = `${finalHeight}px`
     }
   }, [])
@@ -1280,7 +1283,7 @@ export function ProjectView({
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="bg-card fixed right-4 sm:right-8 bottom-24 z-[200] flex h-[500px] w-[calc(100vw-32px)] sm:w-[380px] flex-col overflow-hidden rounded-3xl border shadow-2xl"
+            className="bg-card fixed right-4 bottom-24 z-[200] flex h-[500px] w-[calc(100vw-32px)] flex-col overflow-hidden rounded-3xl border shadow-2xl sm:right-8 sm:w-[380px]"
           >
             <div className="bg-muted/5 flex shrink-0 items-center justify-between border-b p-5">
               <div className="flex items-center gap-3">
@@ -1288,7 +1291,9 @@ export function ProjectView({
                   <Sparkles className="text-primary size-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-foreground">Project assistant</span>
+                  <span className="text-foreground text-sm font-semibold">
+                    Project assistant
+                  </span>
                 </div>
               </div>
               <Button
@@ -1301,7 +1306,7 @@ export function ProjectView({
               </Button>
             </div>
 
-            <ScrollArea className="flex-1 min-h-0 p-6">
+            <ScrollArea className="min-h-0 flex-1 p-6">
               <div className="space-y-6">
                 {chatMessages.length === 0 && (
                   <div className="bg-muted/5 flex flex-col items-center justify-center gap-5 rounded-3xl border border-dashed py-16 text-center">
@@ -1339,25 +1344,24 @@ export function ProjectView({
                       {msg.role === "user" ? (
                         msg.content
                       ) : (
-                        <MessageResponse>{parseMarkdown(msg.content)}</MessageResponse>
+                        <MessageResponse>
+                          {parseMarkdown(msg.content)}
+                        </MessageResponse>
                       )}
                     </div>
                   </div>
                 ))}
 
-
                 {chatStatus && (
                   <div className="flex items-center gap-3 px-2 py-1">
                     <div className="border-primary h-4 w-4 animate-spin rounded-full border-2 border-t-transparent" />
-                    <span className="text-xs text-slate-400">
-                      {chatStatus}
-                    </span>
+                    <span className="text-xs text-slate-400">{chatStatus}</span>
                   </div>
                 )}
               </div>
             </ScrollArea>
 
-            <div className="border-t shrink-0 p-5">
+            <div className="shrink-0 border-t p-5">
               <div className="relative flex items-end gap-3">
                 <AutoResizeTextarea
                   className="bg-muted/30 focus:border-primary/20 max-h-32 min-h-[48px] w-full rounded-2xl border px-5 py-3 text-[13px] leading-relaxed transition-all"

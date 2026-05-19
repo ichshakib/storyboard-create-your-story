@@ -96,14 +96,16 @@ export default function AccountPage() {
 
   React.useEffect(() => {
     if (session) {
-      fetchAccountsAndSessions()
+      Promise.resolve().then(() => {
+        fetchAccountsAndSessions()
+      })
     }
   }, [session, fetchAccountsAndSessions])
 
   if (isPending) {
     return (
       <div className="flex h-screen items-center justify-center bg-[#F8F9FB] dark:bg-[#0A0A0B]">
-        <Loader2 className="size-8 animate-spin text-primary" />
+        <Loader2 className="text-primary size-8 animate-spin" />
       </div>
     )
   }
@@ -208,7 +210,8 @@ export default function AccountPage() {
               Account Settings
             </h2>
             <p className="text-muted-foreground">
-              Manage your personal details, connected accounts, and security preferences.
+              Manage your personal details, connected accounts, and security
+              preferences.
             </p>
           </div>
 
@@ -223,17 +226,18 @@ export default function AccountPage() {
                   <CardTitle>Display Name</CardTitle>
                 </div>
                 <CardDescription>
-                  This name will be visible to collaborators on your storyboards.
+                  This name will be visible to collaborators on your
+                  storyboards.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex flex-col items-center sm:flex-row sm:items-start gap-6 pb-2">
-                  <ProfileImageUpload 
+                <div className="flex flex-col items-center gap-6 pb-2 sm:flex-row sm:items-start">
+                  <ProfileImageUpload
                     src={session.user.image}
                     name={session.user.name}
                     onSuccess={() => refetch()}
                   />
-                  <div className="flex-1 space-y-6 w-full">
+                  <div className="w-full flex-1 space-y-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name</Label>
                       <Input
@@ -246,11 +250,11 @@ export default function AccountPage() {
                     </div>
                     <div className="space-y-2 opacity-70">
                       <Label htmlFor="email">Email Address</Label>
-                      <div className="flex items-center gap-2 text-sm font-medium bg-muted p-3 rounded-md border max-w-md">
-                        <Mail className="size-4 text-muted-foreground" />
+                      <div className="bg-muted flex max-w-md items-center gap-2 rounded-md border p-3 text-sm font-medium">
+                        <Mail className="text-muted-foreground size-4" />
                         {session.user.email}
                       </div>
-                      <p className="text-[11px] text-muted-foreground italic">
+                      <p className="text-muted-foreground text-[11px] italic">
                         Email address cannot be changed directly.
                       </p>
                     </div>
@@ -286,17 +290,21 @@ export default function AccountPage() {
               <CardContent>
                 {isLoadingAccounts ? (
                   <div className="flex justify-center py-6">
-                    <Loader2 className="size-6 animate-spin text-muted-foreground" />
+                    <Loader2 className="text-muted-foreground size-6 animate-spin" />
                   </div>
                 ) : (
-                  <div className="grid gap-3 max-w-md">
+                  <div className="grid max-w-md gap-3">
                     {/* Google OAuth Row */}
-                    <div className="flex items-center justify-between p-4 border rounded-xl bg-card hover:shadow-sm transition-all">
+                    <div className="bg-card flex items-center justify-between rounded-xl border p-4 transition-all hover:shadow-sm">
                       <div className="flex items-center gap-3">
-                        <Globe className="size-5 text-muted-foreground" />
+                        <Globe className="text-muted-foreground size-5" />
                         <div>
-                          <p className="text-sm font-semibold">Google Account</p>
-                          <p className="text-xs text-muted-foreground">Social Authentication</p>
+                          <p className="text-sm font-semibold">
+                            Google Account
+                          </p>
+                          <p className="text-muted-foreground text-xs">
+                            Social Authentication
+                          </p>
                         </div>
                       </div>
 
@@ -305,7 +313,7 @@ export default function AccountPage() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="h-8 text-xs gap-1.5 text-destructive hover:bg-destructive/10 border-destructive/20 hover:border-destructive/30"
+                            className="text-destructive hover:bg-destructive/10 border-destructive/20 hover:border-destructive/30 h-8 gap-1.5 text-xs"
                             onClick={() => handleUnlinkAccount("google")}
                           >
                             <Unlink className="size-3" />
@@ -315,7 +323,7 @@ export default function AccountPage() {
                           <Button
                             variant="secondary"
                             size="sm"
-                            className="h-8 text-xs gap-1.5"
+                            className="h-8 gap-1.5 text-xs"
                             onClick={() => handleLinkSocial("google")}
                           >
                             <LinkIcon className="size-3" />
@@ -326,15 +334,19 @@ export default function AccountPage() {
                     </div>
 
                     {/* Standard Email Row */}
-                    <div className="flex items-center justify-between p-4 border rounded-xl bg-muted/20 opacity-80">
+                    <div className="bg-muted/20 flex items-center justify-between rounded-xl border p-4 opacity-80">
                       <div className="flex items-center gap-3">
-                        <Mail className="size-5 text-muted-foreground" />
+                        <Mail className="text-muted-foreground size-5" />
                         <div>
-                          <p className="text-sm font-semibold">Email & Password</p>
-                          <p className="text-xs text-muted-foreground">Standard Credentials</p>
+                          <p className="text-sm font-semibold">
+                            Email & Password
+                          </p>
+                          <p className="text-muted-foreground text-xs">
+                            Standard Credentials
+                          </p>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground bg-muted px-2 py-1 rounded">
+                      <span className="text-muted-foreground bg-muted rounded px-2 py-1 text-[10px] font-bold tracking-wider uppercase">
                         Primary
                       </span>
                     </div>
@@ -354,7 +366,7 @@ export default function AccountPage() {
                   Update your authentication credentials securely.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4 max-w-md">
+              <CardContent className="max-w-md space-y-4">
                 <div className="grid gap-2">
                   <Label htmlFor="old-password">Current Password</Label>
                   <Input
@@ -399,40 +411,42 @@ export default function AccountPage() {
                   <CardTitle>Active Sessions</CardTitle>
                 </div>
                 <CardDescription>
-                  Review and terminate active web sessions logged in on other devices.
+                  Review and terminate active web sessions logged in on other
+                  devices.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 {isLoadingSessions ? (
                   <div className="flex justify-center py-6">
-                    <Loader2 className="size-6 animate-spin text-muted-foreground" />
+                    <Loader2 className="text-muted-foreground size-6 animate-spin" />
                   </div>
                 ) : (
-                  <div className="space-y-3 max-w-xl">
+                  <div className="max-w-xl space-y-3">
                     {sessions.map((sess) => (
                       <div
                         key={sess.id}
-                        className="flex items-center justify-between gap-4 p-4 rounded-xl border bg-card hover:shadow-sm transition-all"
+                        className="bg-card flex items-center justify-between gap-4 rounded-xl border p-4 transition-all hover:shadow-sm"
                       >
-                        <div className="flex items-center gap-3 overflow-hidden min-w-0">
-                          <div className="p-2 bg-muted rounded-lg shrink-0">
+                        <div className="flex min-w-0 items-center gap-3 overflow-hidden">
+                          <div className="bg-muted shrink-0 rounded-lg p-2">
                             {sess.userAgent?.includes("Mobi") ? (
-                              <Smartphone className="size-4 text-muted-foreground" />
+                              <Smartphone className="text-muted-foreground size-4" />
                             ) : (
-                              <Laptop className="size-4 text-muted-foreground" />
+                              <Laptop className="text-muted-foreground size-4" />
                             )}
                           </div>
-                          <div className="truncate min-w-0">
-                            <p className="text-sm font-semibold truncate flex items-center gap-2">
+                          <div className="min-w-0 truncate">
+                            <p className="flex items-center gap-2 truncate text-sm font-semibold">
                               {sess.userAgent || "Unknown Browser / Client"}
                               {sess.token === session.session.token && (
-                                <span className="shrink-0 text-[9px] bg-muted text-muted-foreground px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter border">
+                                <span className="bg-muted text-muted-foreground shrink-0 rounded-full border px-2 py-0.5 text-[9px] font-bold tracking-tighter uppercase">
                                   Current
                                 </span>
                               )}
                             </p>
-                            <p className="text-[10px] text-muted-foreground">
-                              Last used: {new Date(sess.updatedAt).toLocaleDateString()} at{" "}
+                            <p className="text-muted-foreground text-[10px]">
+                              Last used:{" "}
+                              {new Date(sess.updatedAt).toLocaleDateString()} at{" "}
                               {new Date(sess.updatedAt).toLocaleTimeString([], {
                                 hour: "2-digit",
                                 minute: "2-digit",
@@ -445,7 +459,7 @@ export default function AccountPage() {
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="text-destructive hover:bg-destructive/10 shrink-0 size-8"
+                            className="text-destructive hover:bg-destructive/10 size-8 shrink-0"
                             onClick={() => handleRevokeSession(sess.token)}
                             title="Revoke session"
                           >
@@ -455,7 +469,7 @@ export default function AccountPage() {
                       </div>
                     ))}
                     {sessions.length === 0 && (
-                      <p className="text-muted-foreground py-4 text-sm text-center">
+                      <p className="text-muted-foreground py-4 text-center text-sm">
                         No active sessions found.
                       </p>
                     )}
