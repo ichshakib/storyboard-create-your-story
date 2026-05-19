@@ -10,7 +10,7 @@ import {
   Sparkles,
 } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { UserAvatar } from "@/components/user-avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -69,12 +69,7 @@ export function NavUser() {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-8 w-8 rounded-lg border border-black/5">
-                <AvatarImage src={user.image || ""} alt={user.name} />
-                <AvatarFallback className="bg-primary/5 text-primary rounded-lg">
-                  {user.name.substring(0, 2).toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
+              <UserAvatar user={user} className="h-8 w-8 rounded-lg border border-black/5" />
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-bold tracking-tight">
                   {user.name}
@@ -94,12 +89,7 @@ export function NavUser() {
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.image || ""} alt={user.name} />
-                  <AvatarFallback className="bg-primary/5 text-primary rounded-lg font-bold">
-                    {user.name.substring(0, 2).toUpperCase()}
-                  </AvatarFallback>
-                </Avatar>
+                <UserAvatar user={user} className="h-8 w-8 rounded-lg" />
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-bold tracking-tight">
                     {user.name}
@@ -116,9 +106,9 @@ export function NavUser() {
             <DropdownMenuGroup>
               <DropdownMenuItem
                 onClick={() => router.push("/billing")}
-                className="hover:bg-primary/5 hover:text-primary cursor-pointer rounded-lg font-bold transition-all"
+                className="cursor-pointer rounded-lg font-medium"
               >
-                <Sparkles className="text-primary mr-2 h-4 w-4" />
+                <Sparkles className="mr-2 h-4 w-4 opacity-40" />
                 Upgrade to Pro
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -153,9 +143,9 @@ export function NavUser() {
 
             <DropdownMenuItem
               onClick={handleLogout}
-              className="text-destructive focus:bg-destructive/10 focus:text-destructive cursor-pointer rounded-lg font-bold"
+              className="cursor-pointer rounded-lg font-medium"
             >
-              <LogOut className="mr-2 h-4 w-4" />
+              <LogOut className="mr-2 h-4 w-4 opacity-40" />
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>

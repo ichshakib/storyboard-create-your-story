@@ -247,8 +247,11 @@ function EditorContent() {
   }, [id, fetchProject, fetchCredits])
 
   // Monitor for initial prompt to start the AI generation flow
+  const calledOutlineRef = useRef(false)
   useEffect(() => {
-    if (prompt && !project?.outline && !isGeneratingOutline && !error) {
+    if (prompt && !loading && !project?.outline && !isGeneratingOutline && !error) {
+      if (calledOutlineRef.current) return
+      calledOutlineRef.current = true
       Promise.resolve().then(() => setLastPrompt(prompt))
       // Remove the prompt from the URL to keep it clean
       const url = new URL(window.location.href)
@@ -258,7 +261,7 @@ function EditorContent() {
       Promise.resolve().then(() => generateOutline(prompt))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [prompt, project?.outline, isGeneratingOutline, error])
+  }, [prompt, loading, project?.outline, isGeneratingOutline, error])
 
   /**
    * AI Refinement: Takes a specific placeholder slide and generates full HTML.

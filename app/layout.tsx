@@ -61,6 +61,8 @@ export const metadata: Metadata = {
  * 3. NextTopLoader: Displays a progress bar during navigation.
  * 4. Toaster: Handles application-wide notifications.
  */
+import { ThemeKeyboardShortcut } from "@/components/theme-shortcut"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -81,6 +83,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
+            {/* Global keyboard theme shortcut listener */}
+            <ThemeKeyboardShortcut />
             {/* Global navigation progress bar */}
             <NextTopLoader
               showSpinner={false}

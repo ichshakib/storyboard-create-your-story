@@ -1,142 +1,89 @@
 "use client"
 
 import * as React from "react"
-import { Check, AlertCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card"
+import { AlertCircle, Check } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 
 const PLANS = [
   {
-    name: "Free",
+    name: "Free Plan",
     price: "$0",
     description: "Ideal for beginners and small projects.",
     features: [
-      "Up to 3 storyboards",
+      "Up to 3 active storyboards",
       "Standard exports (PDF)",
       "Daily AI credit allotment",
-      "Community support",
     ],
-    buttonText: "Current Plan",
-    active: true,
   },
   {
-    name: "Starter",
+    name: "Starter Plan",
     price: "$19",
     description: "For individual creators and power users.",
     features: [
       "Unlimited storyboards",
       "HD image & PDF exports",
       "Advanced AI Architect",
-      "Priority email support",
     ],
-    buttonText: "Upgrade",
-    active: false,
-    available: false,
   },
   {
-    name: "Pro",
+    name: "Pro Plan",
     price: "$49",
     description: "Designed for agencies and teams.",
     features: [
       "Everything in Starter",
       "Team collaboration tools",
       "Bulk storyboard generation",
-      "Priority API access",
     ],
-    buttonText: "Upgrade",
-    active: false,
-    available: false,
   },
 ]
 
 export default function BillingPage() {
   return (
-    <div className="bg-background flex min-h-[90vh] flex-1 flex-col items-center px-6 py-20">
-      <div className="w-full max-w-5xl space-y-12">
-        {/* Header */}
-        <div className="flex flex-col items-center space-y-4 text-center">
-          <h1 className="text-foreground text-4xl font-bold tracking-tight">
-            Plans & Subscriptions
-          </h1>
-          <p className="text-muted-foreground max-w-lg leading-relaxed font-medium">
-            Transparent options for every storyteller. All plans include
-            automated daily credit refreshes.
-          </p>
-        </div>
+    <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-6 p-6">
+      {/* Service Unavailable Banner */}
+      <div className="flex items-center gap-3 rounded-xl border border-destructive/20 bg-destructive/5 p-4 text-destructive text-sm font-medium">
+        <AlertCircle className="size-4 shrink-0" />
+        <span>Subscription management and upgrades are currently unavailable.</span>
+      </div>
 
-        {/* Plans Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {PLANS.map((plan) => (
-            <Card
-              key={plan.name}
-              className={`border-border/50 bg-card flex flex-col overflow-hidden rounded-3xl shadow-sm transition-all duration-300 ${plan.active ? "ring-primary ring-1" : ""}`}
-            >
-              <CardHeader className="space-y-4 p-8 pb-4">
-                <span className="text-muted-foreground/60 text-[10px] font-bold tracking-widest">
-                  {plan.name}
-                </span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold tracking-tight">
-                    {plan.price}
-                  </span>
-                  <span className="text-muted-foreground/60 text-sm font-medium">
-                    /mo
-                  </span>
-                </div>
-                <CardDescription className="text-sm leading-relaxed font-medium">
-                  {plan.description}
-                </CardDescription>
-              </CardHeader>
+      <div className="space-y-0.5">
+        <h2 className="text-foreground text-2xl font-bold tracking-tight">
+          Plans & Billing
+        </h2>
+        <p className="text-muted-foreground">
+          View available plans and subscription tier options.
+        </p>
+      </div>
 
-              <CardContent className="flex-1 p-8 pt-6">
-                <ul className="space-y-3">
-                  {plan.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="text-foreground/80 flex items-start gap-3 text-sm font-medium"
-                    >
-                      <Check className="text-primary mt-0.5 size-3.5 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-
-              <CardFooter className="flex flex-col gap-3 p-8 pt-4">
-                <Button
-                  variant={plan.active ? "secondary" : "outline"}
-                  disabled={!plan.active}
-                  className="h-11 w-full rounded-xl text-xs font-bold tracking-widest"
-                >
-                  {plan.buttonText}
-                </Button>
-
-                {!plan.active && (
-                  <div className="flex items-center justify-center gap-1.5 opacity-60">
-                    <AlertCircle className="size-3" />
-                    <span className="text-[9px] font-bold tracking-widest">
-                      Not available now
-                    </span>
-                  </div>
-                )}
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-
-        {/* Info Footer */}
-        <div className="border-border/50 border-t pt-8 text-center">
-          <p className="text-muted-foreground/40 text-[10px] font-bold tracking-[0.2em]">
-            Credits reset automatically at 12:00 AM UTC
-          </p>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+        {PLANS.map((plan) => (
+          <Card key={plan.name} className="flex flex-col border-border/50 bg-card/50">
+            <CardHeader className="pb-4">
+              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                {plan.name}
+              </span>
+              <div className="flex items-baseline gap-1 mt-1">
+                <span className="text-3xl font-bold">{plan.price}</span>
+                <span className="text-muted-foreground text-xs">/mo</span>
+              </div>
+              <CardDescription className="text-xs pt-1.5">
+                {plan.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1 space-y-4">
+              <ul className="space-y-2">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-xs font-medium text-muted-foreground">
+                    <Check className="size-3.5 text-primary shrink-0 mt-0.5" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </div>
   )
 }
+

@@ -102,7 +102,7 @@ export function SlidePreview({
       window.removeEventListener("resize", updateScale)
       observer.disconnect()
     }
-  }, [autoScale, scale])
+  }, [autoScale, scale, html])
 
   /**
    * srcDoc Memo: Constructs the complete sandboxed HTML document.

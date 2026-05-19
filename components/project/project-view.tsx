@@ -4,6 +4,7 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence, Reorder } from "framer-motion"
 import { useChat } from "@/hooks/use-chat"
+import { MessageResponse, parseMarkdown } from "@/components/ai-elements/message"
 import {
   ChevronLeft,
   Sparkles,
@@ -127,9 +128,24 @@ const AutoResizeTextarea = ({
   const adjustHeight = React.useCallback(() => {
     const textarea = textareaRef.current
     if (textarea) {
-      textarea.style.height = "0px"
+      textarea.style.height = "auto"
       const scrollHeight = textarea.scrollHeight
-      textarea.style.height = `${scrollHeight}px`
+      
+      let finalHeight = scrollHeight
+      if (typeof window !== "undefined") {
+        const computedMaxHeight = window.getComputedStyle(textarea).maxHeight
+        const maxHeight = parseFloat(computedMaxHeight)
+        if (!isNaN(maxHeight)) {
+          if (scrollHeight > maxHeight) {
+            finalHeight = maxHeight
+            textarea.style.overflowY = "auto"
+          } else {
+            textarea.style.overflowY = "hidden"
+          }
+        }
+      }
+      
+      textarea.style.height = `${finalHeight}px`
     }
   }, [])
 
@@ -151,7 +167,7 @@ const AutoResizeTextarea = ({
       onBlur={onBlur}
       onKeyDown={onKeyDown}
       className={cn(
-        "w-full resize-none overflow-hidden border-none bg-transparent p-1 outline-none focus:ring-0",
+        "w-full resize-none border-none bg-transparent p-1 outline-none focus:ring-0",
         className
       )}
       placeholder={placeholder}
@@ -251,7 +267,7 @@ export function ProjectView({
       setTitle(p.title)
       setDescription(p.description || "")
       setSlides(p.slides)
-      hasUserChangesRef.current = true
+      hasUserChangesRef.current = false
     },
   })
 
@@ -1264,18 +1280,15 @@ export function ProjectView({
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="bg-card fixed right-8 bottom-24 z-[200] flex h-[500px] w-[380px] flex-col overflow-hidden rounded-3xl border shadow-2xl"
+            className="bg-card fixed right-4 sm:right-8 bottom-24 z-[200] flex h-[500px] w-[calc(100vw-32px)] sm:w-[380px] flex-col overflow-hidden rounded-3xl border shadow-2xl"
           >
-            <div className="bg-muted/5 flex items-center justify-between border-b p-5">
+            <div className="bg-muted/5 flex shrink-0 items-center justify-between border-b p-5">
               <div className="flex items-center gap-3">
                 <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-xl">
                   <Sparkles className="text-primary size-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-muted-foreground/60 text-[10px] font-black tracking-widest uppercase">
-                    AI Architect
-                  </span>
-                  <span className="text-xs font-bold">Project Assistant</span>
+                  <span className="text-sm font-semibold text-foreground">Project assistant</span>
                 </div>
               </div>
               <Button
@@ -1288,7 +1301,7 @@ export function ProjectView({
               </Button>
             </div>
 
-            <ScrollArea className="flex-1 p-6">
+            <ScrollArea className="flex-1 min-h-0 p-6">
               <div className="space-y-6">
                 {chatMessages.length === 0 && (
                   <div className="bg-muted/5 flex flex-col items-center justify-center gap-5 rounded-3xl border border-dashed py-16 text-center">
@@ -1306,19 +1319,7 @@ export function ProjectView({
                     </div>
                   </div>
                 )}
-                {chatStatus && (
-                  <div className="flex items-center gap-3 px-2 py-1">
-                    <div className="relative">
-                      <div className="border-primary/30 h-5 w-5 animate-spin rounded-full border-t-2" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Sparkles className="text-primary size-2.5 animate-pulse" />
-                      </div>
-                    </div>
-                    <span className="text-muted-foreground text-[10px] font-bold tracking-widest uppercase opacity-60">
-                      {chatStatus}
-                    </span>
-                  </div>
-                )}
+
                 {chatMessages.map((msg, i) => (
                   <div
                     key={i}
@@ -1335,22 +1336,29 @@ export function ProjectView({
                           : "bg-muted/30 border shadow-sm"
                       )}
                     >
-                      {msg.content}
+                      {msg.role === "user" ? (
+                        msg.content
+                      ) : (
+                        <MessageResponse>{parseMarkdown(msg.content)}</MessageResponse>
+                      )}
                     </div>
                   </div>
                 ))}
-                {isChatLoading && (
-                  <div className="flex items-center gap-2 px-2">
-                    <div className="bg-primary/30 h-1.5 w-1.5 animate-bounce rounded-full" />
-                    <div className="bg-primary/30 h-1.5 w-1.5 animate-bounce rounded-full [animation-delay:0.2s]" />
-                    <div className="bg-primary/30 h-1.5 w-1.5 animate-bounce rounded-full [animation-delay:0.4s]" />
+
+
+                {chatStatus && (
+                  <div className="flex items-center gap-3 px-2 py-1">
+                    <div className="border-primary h-4 w-4 animate-spin rounded-full border-2 border-t-transparent" />
+                    <span className="text-xs text-slate-400">
+                      {chatStatus}
+                    </span>
                   </div>
                 )}
               </div>
             </ScrollArea>
 
-            <div className="border-t p-5">
-              <div className="relative flex items-center gap-3">
+            <div className="border-t shrink-0 p-5">
+              <div className="relative flex items-end gap-3">
                 <AutoResizeTextarea
                   className="bg-muted/30 focus:border-primary/20 max-h-32 min-h-[48px] w-full rounded-2xl border px-5 py-3 text-[13px] leading-relaxed transition-all"
                   placeholder="Architectural feedback..."

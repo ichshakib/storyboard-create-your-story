@@ -61,7 +61,10 @@ function OutlineContent() {
     }
   }, [prompt])
 
+  const calledRef = React.useRef(false)
   React.useEffect(() => {
+    if (calledRef.current) return
+    calledRef.current = true
     Promise.resolve().then(() => fetchOutline())
   }, [fetchOutline])
 

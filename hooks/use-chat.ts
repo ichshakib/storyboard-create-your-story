@@ -104,7 +104,20 @@ export function useChat({ projectId, onProjectUpdate }: UseChatOptions) {
                   })
                 }
               } else if (event.type === "tool_call") {
-                setStatus(`Executing: ${event.name.replace(/_/g, " ")}`)
+                const name = event.name
+                if (name === "update_slide") {
+                  setStatus("Updating slide...")
+                } else if (name === "add_slide") {
+                  setStatus("Adding slide...")
+                } else if (name === "delete_slide") {
+                  setStatus("Deleting slide...")
+                } else if (name === "update_project_metadata") {
+                  setStatus("Updating project metadata...")
+                } else if (name === "get_project_details") {
+                  setStatus("Reading project details...")
+                } else {
+                  setStatus(`Executing: ${name.replace(/_/g, " ")}...`)
+                }
               } else if (event.type === "project_update") {
                 if (onProjectUpdate) onProjectUpdate(event.project)
               } else if (event.type === "error") {

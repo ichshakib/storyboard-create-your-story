@@ -29,15 +29,17 @@ export const generateText = async (options: GenerateTextOptions) => {
     parts: [{ text: msg.content }],
   }))
 
-  const response = await ai.models.generateContent({
+  const chat = ai.chats.create({
     model: CHAT_MODEL,
-    contents: [...history, { role: "user", parts: [{ text: input }] }],
+    history: history as any,
     config: {
       systemInstruction: systemInstruction,
       temperature,
       maxOutputTokens: maxTokens,
     },
   })
+
+  const response = await chat.sendMessage({ message: input })
 
   return {
     text: response.text || "",

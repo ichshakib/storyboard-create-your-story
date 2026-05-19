@@ -42,16 +42,18 @@ export const generateObject = async (options: GenerateObjectOptions) => {
     parts: [{ text: msg.content }],
   }))
 
-  const response = await ai.models.generateContent({
+  const chat = ai.chats.create({
     model: CHAT_MODEL,
-    contents: [...history, { role: "user", parts: [{ text: input }] }],
+    history: history as any,
     config: {
       systemInstruction: systemInstruction,
       temperature,
       responseMimeType: "application/json",
-      responseSchema: finalSchema,
+      responseSchema: finalSchema as any,
     },
   })
+
+  const response = await chat.sendMessage({ message: input })
 
   try {
     const text = response.text || "{}"
