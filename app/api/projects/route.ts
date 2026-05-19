@@ -103,7 +103,7 @@ export async function GET(req: Request) {
 
 /**
  * DELETE: Empties the trash for the authenticated user.
- * This is a destructive operation that removes both DB records and Cloudinary assets.
+ * This is a destructive operation that removes both DB records and S3 assets.
  */
 export async function DELETE() {
   try {

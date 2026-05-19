@@ -42,7 +42,7 @@ export async function GET(
 /**
  * PATCH: Updates project metadata or slides.
  * Includes "Asset Cleanup" logic: if slides are removed, their associated
- * Cloudinary assets are automatically purged to save storage space.
+ * S3 assets are automatically purged to save storage space.
  */
 export async function PATCH(
   req: Request,

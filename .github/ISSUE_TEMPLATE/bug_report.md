@@ -16,7 +16,7 @@ assignees: []
 - [ ] Slide Editor
 - [ ] Navigation/Routing
 - [ ] Auth
-- [ ] Media/Cloudinary
+- [ ] Media/S3
 - [ ] Other: **\_\_**
 
 ## 🔁 Reproduction Steps

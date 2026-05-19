@@ -44,42 +44,34 @@ This section guides you through submitting an enhancement suggestion, including 
 
 - **TypeScript**: We use TypeScript for type safety. Please ensure there are no `any` types unless absolutely necessary.
 - **Styling**: We use Tailwind CSS. Avoid writing custom CSS in global files unless it's a reusable utility.
-- **Linting**: Run `npm run lint` before committing to ensure your code follows our standards.
+- **Linting**: Run `pnpm run lint` before committing to ensure your code follows our standards.
 
 ## 🛠 Development Setup
 
 1.  Clone the repository.
 2.  Install dependencies:
     ```bash
-    bun install # recommended
-    # or
-    npm install
+    pnpm install
     ```
 3.  Set up your `.env` file (see [README.md](README.md)).
 4.  Set up the database and run migrations:
     ```bash
-    bun run db:migrate
-    # or
-    npm run db:migrate
+    pnpm run db:migrate
     ```
 5.  Run the development server:
     ```bash
-    bun dev
-    # or
-    npm run dev
+    pnpm run dev
     ```
 
-## 🧪 Testing
+## 🧪 Code Verification & Formatting
 
-We use Jest for unit tests and Playwright for end-to-end testing:
+We enforce code quality through formatting checks, linting, and TypeScript compiler checks before merging:
 
-- **Run unit tests**: `bun run test` or `npm run test`
-- **Run unit tests (watch mode)**: `bun run test:watch` or `npm run test:watch`
-- **Run E2E tests**: `bun run test:e2e` or `npm run test:e2e`
-- **Run E2E tests with UI**: `bun run test:e2e:ui` or `npm run test:e2e:ui`
-- **Linting**: `bun run lint` or `npm run lint`
-- **Format check**: `bun run format:check` or `npm run format:check`
-- **Formatting**: `bun run format` or `npm run format`
+- **Run Linter**: `pnpm run lint`
+- **Check Formatting**: `pnpm run format:check`
+- **Auto-format Code**: `pnpm run format`
+- **Run Type Checks**: `pnpm run typecheck`
+- **Verify Build**: `pnpm run build`
 
 ## 💬 Community
 

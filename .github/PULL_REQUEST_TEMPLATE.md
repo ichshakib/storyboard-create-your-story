@@ -4,10 +4,10 @@
 
 ## Key Changes
 
-- [ ] Refined AI Storyboard generation logic
-- [ ] Implemented project-wide visual theme consistency
-- [ ] Optimized slide content density and UI responsiveness
-- [ ] Added GitHub CI workflow and PR template
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Documentation/Template update
 
 ## Verification Results
 
@@ -20,6 +20,6 @@
 
 ### Manual Testing
 
-- [ ] Verified AI chat refinement with streaming
-- [ ] Verified slide expansion and re-indexing
-- [ ] Verified theme propagation across slides
+- [ ] Verified locally on development server (`pnpm run dev`)
+- [ ] Verified visual theme consistency and UI responsiveness (if applicable)
+- [ ] Verified API routes/actions work correctly (if applicable)
