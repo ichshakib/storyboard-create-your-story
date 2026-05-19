@@ -63,10 +63,10 @@ export function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="relative border-t border-white/5 bg-[#030706] antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+    <section id="pricing" className="relative border-t border-border bg-background antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
       {/* Subtle Grid Background & Ambient Glow */}
       <div
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-0 z-0 opacity-40 dark:opacity-100"
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)",
@@ -79,25 +79,25 @@ export function Pricing() {
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
         {/* Title area */}
         <div className="mb-16 flex flex-col items-center text-center space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#070D0A] px-3 py-1 text-xs font-semibold text-slate-400">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
             <Icon icon="solar:tag-linear" />
             Pricing strategy
           </div>
-          <h2 className="text-3xl leading-tight font-medium tracking-tight text-white lg:text-4xl">
+          <h2 className="text-3xl leading-tight font-medium tracking-tight text-foreground lg:text-4xl">
             Sleek tiers, <span className="text-emerald-500">scaled to fit.</span>
           </h2>
-          <p className="max-w-md text-sm leading-relaxed text-slate-400">
+          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
             Scale your visual outputs without abstract friction. Upgrade or downgrade seamlessly as your pipeline needs evolve.
           </p>
 
           {/* Billing Toggle */}
           <div className="flex flex-col items-center gap-3 pt-2">
             <div
-              className="relative inline-flex w-max rounded-full border border-white/10 bg-[#050C09] p-1 shadow-inner"
+              className="relative inline-flex w-max rounded-full border border-border bg-muted p-1 shadow-inner"
             >
               {/* Sliding Indicator */}
               <div
-                className="absolute top-1 bottom-1 w-[80px] rounded-full border border-slate-700/50 bg-slate-800/80 shadow-sm transition-transform duration-300 ease-out"
+                className="absolute top-1 bottom-1 w-[80px] rounded-full border border-border bg-background shadow-sm transition-transform duration-300 ease-out"
                 style={{
                   transform: isAnnually ? "translateX(80px)" : "translateX(0)",
                 }}
@@ -105,18 +105,18 @@ export function Pricing() {
 
               <button
                 onClick={() => handleToggle(false)}
-                className={`relative z-10 w-[80px] py-1.5 text-xs font-medium transition-colors duration-300 ${!isAnnually ? "text-white" : "text-slate-500 hover:text-slate-300"}`}
+                className={`relative z-10 w-[80px] py-1.5 text-xs font-medium transition-colors duration-300 ${!isAnnually ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
               >
                 Monthly
               </button>
               <button
                 onClick={() => handleToggle(true)}
-                className={`relative z-10 w-[80px] py-1.5 text-xs font-medium transition-colors duration-300 ${isAnnually ? "text-white" : "text-slate-500 hover:text-slate-300"}`}
+                className={`relative z-10 w-[80px] py-1.5 text-xs font-medium transition-colors duration-300 ${isAnnually ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
               >
                 Annually
               </button>
             </div>
-            <p className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
+            <p className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
               <Icon icon="solar:tag-bold" />
               Save up to 20% annually
             </p>
@@ -134,8 +134,8 @@ export function Pricing() {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className={`relative rounded-[2rem] flex flex-col justify-between p-8 backdrop-blur-md transition-all duration-300 ${
                 tier.recommended
-                  ? "bg-gradient-to-b from-emerald-500/20 via-emerald-950/5 to-white/5 border border-emerald-500/30 shadow-lg shadow-emerald-950/20"
-                  : "bg-white/[0.01] border border-white/5 hover:border-white/10 hover:bg-white/[0.02]"
+                  ? "bg-gradient-to-b from-emerald-500/10 via-emerald-950/5 to-card border border-emerald-500/30 shadow-lg shadow-emerald-950/20"
+                  : "bg-card/50 border border-border hover:border-emerald-500/20 hover:bg-card"
               }`}
             >
               {tier.recommended && (
@@ -146,35 +146,35 @@ export function Pricing() {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-medium tracking-tight text-white mb-1.5">
+                  <h3 className="text-lg font-medium tracking-tight text-foreground mb-1.5">
                     {tier.name}
                   </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-muted-foreground leading-relaxed">
                     {tier.description}
                   </p>
                 </div>
 
                 <div className="flex items-end gap-1 overflow-hidden">
                   <span
-                    className={`text-3xl font-semibold tracking-tight text-white transition-all duration-150 ease-out ${
+                    className={`text-3xl font-semibold tracking-tight text-foreground transition-all duration-150 ease-out ${
                       animatePrice ? "translate-y-2 opacity-0" : "translate-y-0 opacity-100"
                     }`}
                     style={{ fontFamily: "'Outfit', sans-serif" }}
                   >
                     ${isAnnually ? tier.priceAnnually : tier.priceMonthly}
                   </span>
-                  <span className="text-xs font-medium text-slate-500 pb-1">
+                  <span className="text-xs font-medium text-muted-foreground pb-1">
                     / mo
                   </span>
                 </div>
 
-                <ul className="space-y-3 text-xs text-slate-300 border-t border-white/5 pt-6">
+                <ul className="space-y-3 text-xs text-muted-foreground border-t border-border pt-6">
                   {tier.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <Icon
                         icon="solar:check-circle-linear"
                         className={`text-base shrink-0 mt-0.5 ${
-                          tier.recommended ? "text-emerald-400" : "text-slate-500"
+                          tier.recommended ? "text-emerald-500" : "text-muted-foreground"
                         }`}
                       />
                       <span>{feature}</span>
@@ -188,8 +188,8 @@ export function Pricing() {
                   <button
                     className={`w-full rounded-xl py-3 text-xs font-semibold tracking-wide transition-all ${
                       tier.recommended
-                        ? "bg-white text-black shadow-md hover:bg-slate-200"
-                        : "border border-slate-700 bg-slate-800/50 text-white hover:bg-slate-700"
+                        ? "bg-emerald-500 text-black shadow-md hover:bg-emerald-400"
+                        : "border border-border bg-secondary text-secondary-foreground hover:bg-secondary/80"
                     }`}
                   >
                     {tier.actionText}
