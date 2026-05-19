@@ -16,11 +16,14 @@ export const generateObject = async (options: GenerateObjectOptions) => {
   const finalSchema =
     jsonSchema ||
     (schema
-      ? zodToJsonSchema(schema as unknown as Parameters<typeof zodToJsonSchema>[0], {
-          target: "openApi3",
-          $refStrategy: "none",
-          definitionPath: "definitions",
-        })
+      ? zodToJsonSchema(
+          schema as unknown as Parameters<typeof zodToJsonSchema>[0],
+          {
+            target: "openApi3",
+            $refStrategy: "none",
+            definitionPath: "definitions",
+          }
+        )
       : undefined)
 
   if (abortSignal?.aborted) {

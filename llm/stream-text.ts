@@ -98,13 +98,18 @@ export function streamText(options: StreamTextOptions) {
     let callExecutionCount = 0
     const MAX_CALLS = 5
     let hasChanges = false
-    let currentInput: Parameters<typeof chat.sendMessageStream>[0] = { message: input }
+    let currentInput: Parameters<typeof chat.sendMessageStream>[0] = {
+      message: input,
+    }
 
     while (callExecutionCount < MAX_CALLS) {
       const responseStream = await chat.sendMessageStream(currentInput)
 
-      const functionCalls: NonNullable<Awaited<ReturnType<typeof chat.sendMessage>>["functionCalls"]> = []
-      let lastResponse: Awaited<ReturnType<typeof chat.sendMessage>> | null = null
+      const functionCalls: NonNullable<
+        Awaited<ReturnType<typeof chat.sendMessage>>["functionCalls"]
+      > = []
+      let lastResponse: Awaited<ReturnType<typeof chat.sendMessage>> | null =
+        null
 
       for await (const chunk of responseStream) {
         lastResponse = chunk

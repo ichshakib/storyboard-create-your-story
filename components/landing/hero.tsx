@@ -394,8 +394,8 @@ export function Hero() {
                           Action
                         </span>
                         <p className="leading-relaxed">
-                          Executing tool &apos;generate_slide&apos; on Section 03...
-                          [Success]
+                          Executing tool &apos;generate_slide&apos; on Section
+                          03... [Success]
                         </p>
                       </motion.div>
                     )}
