@@ -2,49 +2,31 @@
 
 import React from "react"
 import Link from "next/link"
-import { Icon } from "@iconify/react"
+import { Logo } from "@/components/logo"
 
 export function LandingFooter() {
   return (
-    <footer className="border-t border-white/5 bg-[#030706] px-8 py-24">
+    <footer className="border-t border-white/5 bg-[#030706] px-8 py-20">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex flex-col items-start justify-between gap-20 lg:flex-row">
-          <div className="space-y-8">
-            <div className="flex flex-col">
-              <span className="text-2xl leading-none font-bold tracking-tighter text-white">
+        <div className="flex flex-col items-start justify-between gap-16 lg:flex-row">
+          <div className="space-y-6">
+            <div className="flex items-center gap-2">
+              <Logo className="text-white" width={28} height={28} />
+              <span className="text-xl font-medium tracking-tight text-white">
                 Storyboard
-              </span>
-              <span className="mt-1 text-xs font-semibold tracking-widest text-emerald-500">
-                Architect
               </span>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-slate-500">
-              Precision orchestration for high-fidelity visual narratives. Built
-              for the next generation of content architects.
+              Precision orchestration for high-fidelity visual narratives. Built for the next generation of storytellers.
             </p>
-            <button className="flex items-center gap-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-4 py-2.5 transition-all hover:bg-emerald-500/10">
-              <Icon
-                icon="solar:siren-linear"
-                width="20"
-                className="text-emerald-500"
-              />
-              <div className="flex flex-col text-left">
-                <span className="text-[9px] leading-none tracking-widest text-emerald-500/70 uppercase">
-                  24/7 Priority
-                </span>
-                <span className="mt-0.5 text-xs leading-none font-medium text-emerald-500">
-                  Technical Support
-                </span>
-              </div>
-            </button>
           </div>
 
           <div className="grid grid-cols-2 gap-x-20 gap-y-12 sm:grid-cols-3">
-            <div className="space-y-6">
-              <span className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">
+            <div className="space-y-4">
+              <span className="text-xs font-semibold text-slate-400">
                 Product
               </span>
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-3">
                 <Link
                   href="/home"
                   className="text-sm text-slate-500 transition-colors hover:text-white"
@@ -59,11 +41,11 @@ export function LandingFooter() {
                 </Link>
               </nav>
             </div>
-            <div className="space-y-6">
-              <span className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">
+            <div className="space-y-4">
+              <span className="text-xs font-semibold text-slate-400">
                 Company
               </span>
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-3">
                 <Link
                   href="#"
                   className="text-sm text-slate-500 transition-colors hover:text-white"
@@ -78,11 +60,11 @@ export function LandingFooter() {
                 </Link>
               </nav>
             </div>
-            <div className="space-y-6">
-              <span className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">
+            <div className="space-y-4">
+              <span className="text-xs font-semibold text-slate-400">
                 Legal
               </span>
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-3">
                 <Link
                   href="#"
                   className="text-sm text-slate-500 transition-colors hover:text-white"
@@ -100,13 +82,12 @@ export function LandingFooter() {
           </div>
         </div>
 
-        <div className="mt-28 flex flex-col items-center justify-between gap-8 border-t border-white/5 pt-12 md:flex-row">
-          <p className="text-xs font-medium text-slate-700 italic">
-            © 2026 Storyboard Architect. All rights reserved.
+        <div className="mt-20 flex flex-col items-center justify-between gap-6 border-t border-white/5 pt-10 md:flex-row">
+          <p className="text-xs text-slate-600">
+            © 2026 Storyboard. All rights reserved.
           </p>
-          <div className="flex gap-10 text-xs font-medium tracking-widest text-slate-700 uppercase">
+          <div className="flex gap-8 text-xs text-slate-600">
             <span>San Francisco</span>
-            <span>v1.0.4</span>
           </div>
         </div>
       </div>

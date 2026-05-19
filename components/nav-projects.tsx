@@ -33,7 +33,7 @@ export function NavProjects({
             <SidebarMenuButton
               asChild
               isActive={pathname === item.url}
-              className="data-[active=true]:bg-primary/10 data-[active=true]:text-primary font-bold transition-all"
+              className="data-[active=true]:bg-primary/10 data-[active=true]:text-primary transition-all"
             >
               <Link href={item.url}>
                 <span className="truncate">{item.name}</span>
