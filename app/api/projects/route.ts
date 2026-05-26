@@ -135,15 +135,13 @@ export async function DELETE() {
     )
 
     // 3. S3 PURGE: Remove physical files from S3 storage
+    // 3. S3 PURGE: Remove physical files from S3 storage
     if (allKeys.length > 0) {
-      try {
-        await deleteMultipleFromS3(allKeys)
-        console.log(
-          `[PROJECTS_DELETE_ALL] Purged ${allKeys.length} assets from S3 during trash empty.`
-        )
-      } catch (err) {
-        console.error("[PROJECTS_DELETE_ALL] S3 purge failed:", err)
-      }
+      // Ensure atomicity: Throw if S3 purge fails to prevent orphaned assets
+      await deleteMultipleFromS3(allKeys)
+      console.log(
+        `[PROJECTS_DELETE_ALL] Purged ${allKeys.length} assets from S3 during trash empty.`
+      )
     }
 
     // 4. DATABASE PURGE: Permanently remove the project records
