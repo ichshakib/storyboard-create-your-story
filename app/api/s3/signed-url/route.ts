@@ -19,6 +19,9 @@ export async function GET(req: Request) {
   }
 
   try {
+    if (!key.startsWith(`uploads/${session.user.id}/`)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 })
+    }
     const url = await getSignedDownloadUrl(key)
     return NextResponse.json({ url })
   } catch (error) {

@@ -20,6 +20,9 @@ export async function GET(req: Request) {
   }
 
   try {
+    if (!key.startsWith(`uploads/${session.user.id}/`)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 })
+    }
     // Generate a signed URL that lasts for 1 hour
     const url = await getSignedDownloadUrl(key, 3600)
 
