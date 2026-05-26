@@ -41,11 +41,8 @@ export async function DELETE(
       const keys = assets
         .map((a) => a.key || a.url)
         .filter((k): k is string => !!k)
-      try {
-        await deleteMultipleFromS3(keys)
-      } catch (err) {
-        console.error("[SLIDE_DELETE] S3 cleanup failed:", err)
-      }
+      // Throw error if S3 cleanup fails to ensure atomicity
+      await deleteMultipleFromS3(keys)
     }
 
     // 3. Atomic Deletion & Re-indexing
