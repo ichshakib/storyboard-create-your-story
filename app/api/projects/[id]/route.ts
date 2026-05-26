@@ -189,17 +189,11 @@ export async function DELETE(
         const keys = allAssets
           .map((asset) => asset.key || asset.url)
           .filter((k): k is string => !!k)
-        try {
-          await deleteMultipleFromS3(keys)
-          console.log(
-            `[PROJECT_DELETE] Automatically cleared ${keys.length} assets from S3 for project ${id}.`
-          )
-        } catch (s3Error) {
-          console.error(
-            "[PROJECT_DELETE] Failed to delete assets from S3:",
-            s3Error
-          )
-        }
+        // Perform S3 cleanup, let it throw if it fails to prevent orphaned assets
+        await deleteMultipleFromS3(keys)
+        console.log(
+          `[PROJECT_DELETE] Automatically cleared ${keys.length} assets from S3 for project ${id}.`
+        )
       }
 
       // 2. DATABASE REMOVAL: Delete the project record
