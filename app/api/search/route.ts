@@ -27,7 +27,7 @@ export async function GET(req: Request) {
       return NextResponse.json([])
     }
 
-    const searchTerm = `%${query.toLowerCase()}%`
+    // Removed unused searchTerm
 
     // COMPLEX RAW QUERY:
     // We use $queryRaw because standard Prisma filtering on nested JSON arrays (slides)
@@ -35,23 +35,28 @@ export async function GET(req: Request) {
     // 1. The project title
     // 2. The project description
     // 3. ANY 'title', 'content', or 'description' key inside the 'slides' JSON array.
-    const projects = await prisma.$queryRaw`
-      SELECT * FROM project
-      WHERE "userId" = ${session.user.id}
-      AND "isDeleted" = false
-      AND (
-        title ILIKE ${searchTerm}
-        OR description ILIKE ${searchTerm}
-        OR EXISTS (
-          SELECT 1 FROM jsonb_array_elements(slides) AS slide
-          WHERE slide->>'title' ILIKE ${searchTerm}
-          OR slide->>'content' ILIKE ${searchTerm}
-          OR slide->>'description' ILIKE ${searchTerm}
-        )
-      )
-      ORDER BY "updatedAt" DESC
-      LIMIT 10;
-    `
+    const projects = await prisma.project.findMany({
+      where: {
+        userId: session.user.id,
+        isDeleted: false,
+        OR: [
+          { title: { contains: query, mode: "insensitive" } },
+          { description: { contains: query, mode: "insensitive" } },
+          {
+            slides: {
+              some: {
+                OR: [
+                  { title: { contains: query, mode: "insensitive" } },
+                  { description: { contains: query, mode: "insensitive" } },
+                ],
+              },
+            },
+          },
+        ],
+      },
+      orderBy: { updatedAt: "desc" },
+      take: 10,
+    })
 
     return NextResponse.json(projects)
   } catch (error) {
