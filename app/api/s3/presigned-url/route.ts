@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
     // Generate a unique key for the file
     const timestamp = Date.now()
-    const key = `uploads/${session.user.id}/${timestamp}-${filename}`
+    const key = `uploads/${session.user.id}/${timestamp}-${filename.replace(/[^a-zA-Z0-9.-]/g, "_")}`
 
     const url = await getPresignedPostUrl(key, contentType)
 
