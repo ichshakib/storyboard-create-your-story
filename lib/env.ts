@@ -1,9 +1,28 @@
-export const RESEND_API_KEY = process.env.RESEND_API_KEY!
-export const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY!
+import { z } from 'zod';
 
-// AWS S3 configurations
-export const AWS_REGION = process.env.AWS_REGION!
-export const AWS_ENDPOINT = process.env.AWS_ENDPOINT!
-export const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID!
-export const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY!
-export const AWS_S3_BUCKET_NAME = process.env.AWS_S3_BUCKET_NAME!
+const envSchema = z.object({
+  RESEND_API_KEY: z.string().min(1, "Missing required environment variable: RESEND_API_KEY"),
+  GOOGLE_API_KEY: z.string().min(1, "Missing required environment variable: GOOGLE_API_KEY"),
+  AWS_REGION: z.string().min(1, "Missing required environment variable: AWS_REGION"),
+  AWS_ENDPOINT: z.string().min(1, "Missing required environment variable: AWS_ENDPOINT"),
+  AWS_ACCESS_KEY_ID: z.string().min(1, "Missing required environment variable: AWS_ACCESS_KEY_ID"),
+  AWS_SECRET_ACCESS_KEY: z.string().min(1, "Missing required environment variable: AWS_SECRET_ACCESS_KEY"),
+  AWS_S3_BUCKET_NAME: z.string().min(1, "Missing required environment variable: AWS_S3_BUCKET_NAME"),
+});
+
+const _env = envSchema.safeParse(process.env);
+
+if (!_env.success) {
+  console.error("❌ Invalid environment variables:", _env.error.format());
+  throw new Error("Invalid environment variables");
+}
+
+export const {
+  RESEND_API_KEY,
+  GOOGLE_API_KEY,
+  AWS_REGION,
+  AWS_ENDPOINT,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_S3_BUCKET_NAME,
+} = _env.data;
