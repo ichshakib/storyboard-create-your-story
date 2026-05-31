@@ -27,6 +27,18 @@ export const s3 = new S3Client({
 })
 
 /**
+/**
+ * Sanitizes an S3 key to prevent path traversal.
+ */
+function sanitizeKey(key: string): string {
+  // Normalize path and remove leading slashes to prevent root-relative traversal
+  const normalized = key.replace(/\.\.\//g, '').replace(/^\/+/, '');
+  if (!normalized) throw new Error("Invalid S3 key: Key cannot be empty or root");
+  return normalized;
+}
+
+
+/**
  * Generates a presigned URL for uploading a file to S3.
  * @param key - The destination path/filename in the bucket
  * @param contentType - The MIME type of the file
@@ -37,9 +49,10 @@ export async function getPresignedPostUrl(
   contentType: string,
   expiresIn: number = 3600
 ) {
+  const sanitizedKey = sanitizeKey(key);
   const command = new PutObjectCommand({
     Bucket: AWS_S3_BUCKET_NAME,
-    Key: key,
+    Key: sanitizedKey,
     ContentType: contentType,
   })
 
@@ -56,9 +69,10 @@ export async function getSignedDownloadUrl(
   key: string,
   expiresIn: number = 3600
 ) {
+  const sanitizedKey = sanitizeKey(key);
   const command = new GetObjectCommand({
     Bucket: AWS_S3_BUCKET_NAME,
-    Key: key,
+    Key: sanitizedKey,
   })
 
   const url = await getSignedUrl(s3, command, { expiresIn })
@@ -76,15 +90,16 @@ export async function uploadToS3(
   buffer: Buffer,
   contentType: string
 ) {
+  const sanitizedKey = sanitizeKey(key);
   const command = new PutObjectCommand({
     Bucket: AWS_S3_BUCKET_NAME,
-    Key: key,
+    Key: sanitizedKey,
     Body: buffer,
     ContentType: contentType,
   })
 
   await s3.send(command)
-  return key
+  return sanitizedKey
 }
 
 /**
@@ -92,9 +107,10 @@ export async function uploadToS3(
  * @param key - The path/filename in the bucket
  */
 export async function deleteFromS3(key: string) {
+  const sanitizedKey = sanitizeKey(key);
   const command = new DeleteObjectCommand({
     Bucket: AWS_S3_BUCKET_NAME,
-    Key: key,
+    Key: sanitizedKey,
   })
 
   await s3.send(command)
@@ -107,10 +123,11 @@ export async function deleteFromS3(key: string) {
 export async function deleteMultipleFromS3(keys: string[]) {
   if (keys.length === 0) return
 
+  const sanitizedKeys = keys.map(sanitizeKey);
   const command = new DeleteObjectsCommand({
     Bucket: AWS_S3_BUCKET_NAME,
     Delete: {
-      Objects: keys.map((key) => ({ Key: key })),
+      Objects: sanitizedKeys.map((key) => ({ Key: key })),
     },
   })
 
