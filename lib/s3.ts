@@ -27,6 +27,20 @@ export const s3 = new S3Client({
 })
 
 /**
+ * Sanitizes an S3 key to prevent path traversal and ensure safe bucket access.
+ */
+function sanitizeKey(key: string): string {
+  // Normalize path and remove leading slashes to prevent root-relative traversal
+  // Also remove '..' sequences to prevent parent directory traversal
+  const sanitized = key
+    .replace(/\.\.\//g, "")
+    .replace(/^\/+/, "")
+    .trim()
+  if (!sanitized) throw new Error("Invalid S3 key: Key cannot be empty or root")
+  return sanitized
+}
+
+/**
  * Generates a presigned URL for uploading a file to S3.
  * @param key - The destination path/filename in the bucket
  * @param contentType - The MIME type of the file
@@ -39,7 +53,7 @@ export async function getPresignedPostUrl(
 ) {
   const command = new PutObjectCommand({
     Bucket: AWS_S3_BUCKET_NAME,
-    Key: key,
+    Key: sanitizeKey(key),
     ContentType: contentType,
   })
 
@@ -58,7 +72,7 @@ export async function getSignedDownloadUrl(
 ) {
   const command = new GetObjectCommand({
     Bucket: AWS_S3_BUCKET_NAME,
-    Key: key,
+    Key: sanitizeKey(key),
   })
 
   const url = await getSignedUrl(s3, command, { expiresIn })
@@ -76,15 +90,16 @@ export async function uploadToS3(
   buffer: Buffer,
   contentType: string
 ) {
+  const sanitizedKey = sanitizeKey(key)
   const command = new PutObjectCommand({
     Bucket: AWS_S3_BUCKET_NAME,
-    Key: key,
+    Key: sanitizedKey,
     Body: buffer,
     ContentType: contentType,
   })
 
   await s3.send(command)
-  return key
+  return sanitizedKey
 }
 
 /**
@@ -94,7 +109,7 @@ export async function uploadToS3(
 export async function deleteFromS3(key: string) {
   const command = new DeleteObjectCommand({
     Bucket: AWS_S3_BUCKET_NAME,
-    Key: key,
+    Key: sanitizeKey(key),
   })
 
   await s3.send(command)
@@ -110,7 +125,7 @@ export async function deleteMultipleFromS3(keys: string[]) {
   const command = new DeleteObjectsCommand({
     Bucket: AWS_S3_BUCKET_NAME,
     Delete: {
-      Objects: keys.map((key) => ({ Key: key })),
+      Objects: keys.map((key) => ({ Key: sanitizeKey(key) })),
     },
   })
 
