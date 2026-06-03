@@ -30,13 +30,18 @@ export const s3 = new S3Client({
  * Sanitizes an S3 key to prevent path traversal and ensure safe bucket access.
  */
 function sanitizeKey(key: string): string {
-  // Normalize path and remove leading slashes to prevent root-relative traversal
-  // Also remove '..' sequences to prevent parent directory traversal
-  const sanitized = key
-    .replace(/\.\.\//g, "")
-    .replace(/^\/+/, "")
-    .trim()
-  if (!sanitized) throw new Error("Invalid S3 key: Key cannot be empty or root")
+  // Prevent directory traversal by checking for '..' and ensuring path is safe
+  if (key.includes("..")) {
+    throw new Error("Invalid S3 key: Path traversal detected")
+  }
+
+  // Remove leading slashes
+  const sanitized = key.replace(/^\/+/, "").trim()
+
+  if (!sanitized) {
+    throw new Error("Invalid S3 key: Key cannot be empty or root")
+  }
+
   return sanitized
 }
 
