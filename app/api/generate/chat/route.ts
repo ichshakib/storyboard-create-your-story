@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server"
 import { streamText } from "@/llm/stream-text"
 import { CHAT_REFINEMENT_SYSTEM_PROMPT } from "@/llm/prompts"
 import { STORYBOARD_TOOLS } from "@/llm/tools"
@@ -27,7 +28,9 @@ interface ProjectData {
 export async function POST(req: Request) {
   try {
     const session = await auth.api.getSession({ headers: await headers() })
-    if (!session) return new Response("Unauthorized", { status: 401 })
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
 
     const {
       projectId,
@@ -44,10 +47,10 @@ export async function POST(req: Request) {
     // 1. Credit Check
     const userCredits = await getOrResetCredits(session.user.id)
     if (userCredits < 10) {
-      return new Response(JSON.stringify({ error: "INSUFFICIENT_CREDITS" }), {
-        status: 403,
-        headers: { "Content-Type": "application/json" },
-      })
+      return NextResponse.json(
+        { error: "INSUFFICIENT_CREDITS" },
+        { status: 403 }
+      )
     }
 
     const userContent = `PROJECT CONTEXT:
@@ -93,6 +96,15 @@ USER FEEDBACK: "${message}"`
     })
   } catch (error) {
     console.error("Chat fatal error:", error)
-    return new Response("Internal Server Error", { status: 500 })
+    return NextResponse.json(
+      {
+        error: "Internal Server Error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Failed to process chat request",
+      },
+      { status: 500 }
+    )
   }
 }
