@@ -101,8 +101,8 @@ Follow these steps to set up the project locally.
     # App
     NEXT_PUBLIC_BASE_URL="http://localhost:3000"
 
-    # Google GenAI (Gemini)
-    GOOGLE_API_KEY="your_google_api_key"
+    # Gemini AI
+    GEMINI_API_KEY="your_gemini_api_key"
 
     # AWS S3 Storage
     AWS_REGION="auto"

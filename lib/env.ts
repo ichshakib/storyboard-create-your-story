@@ -2,7 +2,7 @@ import { z } from "zod"
 
 const envSchema = z.object({
   RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY is required"),
-  GOOGLE_API_KEY: z.string().min(1, "GOOGLE_API_KEY is required"),
+  GEMINI_API_KEY: z.string().min(1, "GEMINI_API_KEY is required"),
 
   // AWS S3 configurations
   AWS_REGION: z.string().default("auto"),
@@ -28,7 +28,7 @@ if (!parsedEnv.success) {
 
 export const {
   RESEND_API_KEY,
-  GOOGLE_API_KEY,
+  GEMINI_API_KEY,
   AWS_REGION,
   AWS_ENDPOINT,
   AWS_ACCESS_KEY_ID,
