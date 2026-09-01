@@ -2,6 +2,13 @@ import { NextResponse } from "next/server"
 import { getPresignedPostUrl } from "@/lib/s3"
 import { auth } from "@/lib/auth"
 
+const ALLOWED_MIME_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+]
+
 /**
  * POST: Generates a presigned URL for client-side uploads to S3/R2.
  */
@@ -17,6 +24,15 @@ export async function POST(req: Request) {
     if (!filename || !contentType) {
       return NextResponse.json(
         { error: "Missing filename or contentType" },
+        { status: 400 }
+      )
+    }
+
+    if (!ALLOWED_MIME_TYPES.includes(contentType)) {
+      return NextResponse.json(
+        {
+          error: `Invalid contentType. Allowed types: ${ALLOWED_MIME_TYPES.join(", ")}`,
+        },
         { status: 400 }
       )
     }
