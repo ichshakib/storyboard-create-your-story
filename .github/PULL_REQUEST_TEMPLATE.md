@@ -2,6 +2,8 @@
 
 [Provide a brief summary of the changes and the problem they solve]
 
+Fixes #[Issue Number]
+
 ## Key Changes
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
