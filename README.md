@@ -66,7 +66,7 @@ Follow these steps to set up the project locally.
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/lwshakib/storyboard-create-your-story.git
+    git clone https://github.com/ichshakib/storyboard-create-your-story.git
     cd storyboard-create-your-story
     ```
 
