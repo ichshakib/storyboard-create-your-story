@@ -1,7 +1,7 @@
 import { generateObject } from "@/llm/generate-object"
 
 export const dynamic = "force-dynamic"
-import { OUTLINE_SYSTEM_PROMPT } from "@/llm/prompts"
+import { OUTLINE_AND_HTML_SYSTEM_PROMPT } from "@/llm/prompts"
 import { getInspirationsMetadata } from "@/inspirations/registry"
 import prisma from "@/lib/prisma"
 import { auth } from "@/lib/auth"
@@ -55,8 +55,13 @@ export async function POST(req: Request) {
               title: { type: "string" },
               prompt: { type: "string" },
               description: { type: "string" },
+              html: {
+                type: "string",
+                description:
+                  "Complete self-contained HTML for the slide, starting with <div id='preview-root' class='w-[960px] h-[540px] ...'>",
+              },
             },
-            required: ["title", "prompt", "description"],
+            required: ["title", "prompt", "description", "html"],
           },
         },
       },
@@ -69,7 +74,7 @@ export async function POST(req: Request) {
         {
           role: "system",
           content:
-            OUTLINE_SYSTEM_PROMPT +
+            OUTLINE_AND_HTML_SYSTEM_PROMPT +
             `\n\nDesign Styles Available:\n${getInspirationsMetadata()}`,
         },
         {
@@ -95,7 +100,7 @@ export async function POST(req: Request) {
       title: s.title || `Section ${idx + 1}`,
       prompt: s.prompt || "Visual direction pending...",
       description: s.description || "Narrative content pending...",
-      html: "",
+      html: (s as { html?: string }).html || "",
       assets: [],
     }))
 
